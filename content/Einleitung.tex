@@ -1,0 +1,19 @@
+\chapter{Einleitung}
+
+\section{Aufgabe}
+
+\section{Architektur}
+
+    Um Aussagen und KLassifikationen über ein Stromnetz bzw. die Geräte in einem Stromnetz machen zu können, werden zunächst viele Daten benötigt.
+    Die Daten bestehen aus verschiedenen physikalische Größen, die zu einem gewissen Zeitpunkt in einem Stromnetz vorkommen.
+    Zu diesen Größen gehört die allgemeine Netzspannung, die Netzfrequenz sowie sieben verschiedene Oberwellen (vgl. \ref{physikalischeGrundlagen}).
+    Um einen allgemeinen Überblick über den Verlauf der Netzaktivität zu erhalten sowie verschiedene Zeiten und Geräte vergleichen zu können, müssen Daten über lange Zeiträume erhoben werden.\\
+    \newline
+    Zur Erhebung der Werte zur Netzaktivität wurde ein WeSense Messgerät\footnote{http://www.wesense-app.com/home-en/} verwendet.
+    Dieses Gerät misst alle benötigten Werte und sendet diese über einen MQTT Broker an einen Service von WeSense, welcher dann die Daten aufwertet und in einer MSSQL Datenbank abspeichert.
+    Die Werte werden sekündlich gemessen und in die Datenbank gespeichert, weshalb zunächst in eine row-based Datenbank gespeichert wird und später dann die Daten in eine column-based Datenbank zur schneller Analyse überführt werden.
+    \newline
+
+    Architektur Bild!!
+
+    \subsection{Klassifikation der Messdaten}
