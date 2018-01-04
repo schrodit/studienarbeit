@@ -1,19 +1,15 @@
 \chapter{Einleitung}
 
-\section{Aufgabe}
-
-\section{Architektur}
-
-    Um Aussagen und KLassifikationen über ein Stromnetz bzw. die Geräte in einem Stromnetz machen zu können, werden zunächst viele Daten benötigt.
-    Die Daten bestehen aus verschiedenen physikalische Größen, die zu einem gewissen Zeitpunkt in einem Stromnetz vorkommen.
-    Zu diesen Größen gehört die allgemeine Netzspannung, die Netzfrequenz sowie sieben verschiedene Oberwellen (vgl. \ref{physikalischeGrundlagen}).
-    Um einen allgemeinen Überblick über den Verlauf der Netzaktivität zu erhalten sowie verschiedene Zeiten und Geräte vergleichen zu können, müssen Daten über lange Zeiträume erhoben werden.\\
+    Was .. nur ein Teil der Informatik war, erhält nun im größere Bedeutung und Einfluss in vielen weiteren wirtschaftlichen und wissenschaftlichen Themen. 
+    Seit Google, Facebook, etc. große Fortschritte in diesem Bereich erzielen und Maschinelles Lernen auch in produktivem Betrieb Einsatz findet, liegt es Nahe dies auch auf bisher unberührten Branchen auszuweiten.\\
     \newline
-    Zur Erhebung der Werte zur Netzaktivität wurde ein WeSense Messgerät\footnote{http://www.wesense-app.com/home-en/} verwendet.
-    Dieses Gerät misst alle benötigten Werte und sendet diese über einen MQTT Broker an einen Service von WeSense, welcher dann die Daten aufwertet und in einer MSSQL Datenbank abspeichert.
-    Die Werte werden sekündlich gemessen und in die Datenbank gespeichert, weshalb zunächst in eine row-based Datenbank gespeichert wird und später dann die Daten in eine column-based Datenbank zur schneller Analyse überführt werden.
+    In dieser Arbeit wird Data-Mining auf elektrotechnische Größen angewendet um weiterführende semantische Aussagen über diese Werte zu erhalten. 
+    Es werden verschiedene Netzdaten und dazugehörige Verläufe aufgezeichnet und mithilfe von verschiedenen Methoden von Maschinellem Lernen analysiert.
+    Hauptbestandteil ist die Mustererkennung in den aufgenommenen Verläufen und deren Zuordnung zu verschiedenen Geräten in einem Haushalt. 
+    Hierbei sollen verschiedene normale Haushaltgeräte, wie Kaffeemaschinen oder Fernseher, welche in einem Stromnetzes eines privaten Haushalts erkannt werden um somit Aussagen über Laufleistungen zu treffen.
+    Außerdem wird auf die wirtschaftliche Nutzung des resultierenden Modells, sowie deren Produktivbetrieb eingegangen.\\
     \newline
-
-    Architektur Bild!!
-
-    \subsection{Klassifikation der Messdaten}
+    Für die maschinelle Analyse wird die Keras-API\footnote{https://keras.io/} mit Tensorflow im Backend verwendet.
+    Die Datenverarbeitung, Visualisierung sowie die Trainings- und Testphasen werden mit Python\footnote{https://www.python.org/} umgesetzt.\\
+    \newline
+    Zur Erhebung der Messdaten wird in Zusammenarbeit mit a-eberle\footnote{https://www.a-eberle.de/de} das Wesense-Messgerät verwendet. 
