@@ -29,12 +29,30 @@
         Jedoch wird zur automatischen Erhebung ein weiteres Gerät benötigt, welches zwischen dem zu messenden Gerät und dem Stromnetz zwischengeschalten wird und sobald Strom fließt Daten erfasst.
         Somit werden die manuell durch eine Person erfasst.\\
         \newline
-        Hierzu wurde eine progressive Web-App(vgl. Abbildung \ref{fig:WebApp1}) mit einer einfachen MySQL-Datenbank erstellt, mit der die Daten sehr einfach erfasst und abgespeichert werden können.
+        Hierzu wurde eine progressiv Web-App(vgl. Abbildung \ref{fig:WebApp1}) mit einer einfachen MySQL-Datenbank erstellt, mit der die Daten sehr einfach erfasst und abgespeichert werden können.
 
         \begin{figure}[h]
             \centering
             \includegraphics[width=0.5\textwidth]{WesenseConveyWebApp}
             \caption{Screenshot der progressive Web-App}
             \label{fig:WebApp1}
+        \end{figure}
+    
+\section{Visualisierung}\label{VisualisierungWebApp}
+
+        Zusätzlich zur manuellen Erhebung der Daten wurden zur besseren Analyse der Daten verschiedene Visualisierungsmöglichkeiten implementiert.
+        Zum einen können die verschiedenen Physikalischen Größen eines gelabelten Gerätes zu einem bestimmten Zeitpunkt miteinander verglichen werden.
+        Außerdem können bestimmte Größen zu verschiedenen gelabelten Zeiträumen eines Gerätes verglichen und analysiert werden. 
+        Durch diese Visualisierung können sehr gut und genau Gemeinsamkeiten in verschiedenen Größen oder Zeiten erkannt werden.\\
+        \newline
+        Es werden verschiedene Diagramme sowie Normalisierungen der Daten zur Analyse bereitgestellt.
+        Es besteht die Möglichkeit die Daten in einem Liniendiagramm sekündlich oder in frei wählbaren zusammengefassten Datenpunkten, sogennannten Klassen, anzuzeigen.
+        Des weiteren können Histogramme mit verschiedenen Klassen gewählt werden.
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.75\textwidth]{WesenseConveylineChart}
+            \caption{Screenshot eines gelabelten Zeitraumes aus der Web-App}
+            \label{fig:WebApp2}
         \end{figure}
         
