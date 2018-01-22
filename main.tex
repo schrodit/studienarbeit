@@ -6,6 +6,33 @@
 \usepackage[english, german]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{listings}
+\usepackage{float}
+
+%page header
+\usepackage{fancyhdr}
+
+%ref on table of contents
+\usepackage{hyperref}
+
+%acronyms
+\usepackage[dua]{acronym}
+
+
+%signature field
+\newcommand{\titledate}[2][2.5in]{%
+
+  \begin{tabular}{@{}p{#1}@{}}
+    \\ \hline \\[-.75\normalbaselineskip]
+    #2
+  \end{tabular} \hspace{1in}
+  \begin{tabular}{@{}p{#1}@{}}
+    \\ \hline \\[-.75\normalbaselineskip]
+    Location, Date
+  \end{tabular}
+}
+
+
 
 %Path in Windows format:
 \graphicspath{ {img/} }
@@ -29,6 +56,7 @@ Netzwerk}
 \include{content/Wirtschaftlichkeit}
 \include{content/Ausblick}
 
+\include{content/Acronyms}
 
 \bibliography{bib/mybib}{}
 \bibliographystyle{plain}

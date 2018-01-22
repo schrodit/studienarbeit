@@ -24,7 +24,7 @@
     Somit kann die Zweite Tiefpunktphase dem ``Pressvorgang'' der Kaffeemaschine zugeordnet werden.\\
     \newline
     
-    \begin{figure}[h]
+    \begin{figure}[H]
         \centering
         \includegraphics[width=0.8\textwidth]{SpannungsverlaufSenseo1}
         \includegraphics[width=0.8\textwidth]{SpannungsverlaufSenseo2}
@@ -38,7 +38,7 @@
     Wie bei dem Vergleich der verschiedenen harmonischen Oberwellen zu sehen ist (siehe Schaubild \ref{fig:3OberwelleMikrowelle}), besteht eine große Ähnlichkeit der Kurven der dritten harmonischen Welle.\\
     \newline
 
-    \begin{figure}[h]
+    \begin{figure}[H]
         \centering
         \includegraphics[width=0.8\textwidth]{3OberwelleMikrowelle1}
         \includegraphics[width=0.8\textwidth]{3OberwelleMikrowelle2}
@@ -48,13 +48,53 @@
 
     \noindent
     Wie dieser Abschnitt zeigt können schon mit bloßen Auge bestimmte Auswirkungen der verschiedenen Geräte erkannt werden.
-    Auch wenn manchmal einige Störungen auftreten und den Verlauf verfälschen sollte es demnach möglich sein diese Geräte herauszufiltern.
-    Da nun das manuelle Durchsuchen von langen Zeitspannen sehr mühselig ist wird nun weiterführend beschrieben diese Klassifizierung der Geräte auf maschinellem Lernen abzubilden.
-
-\section{Vorbereiten der Daten}
+    Auch wenn einige Störungen auftreten und den Verlauf verfälschen sollte es dennoch möglich sein diese Geräte herauszufiltern.
+    Weiterführend wird dieser Prozess automatisiert und zu verbessert um auch trotz großer Störungen, Geräte präzise Klassifizieren zu können. 
 
 \section{Neuronales Netz}
+
+
+\section{Vorbereiten der Daten}
+    Um Klassifizierung der Geräte auf neuronalen Netzen abzubilden müssen die vorhandenen Daten in ein geeignetes Format transformiert werden.
+    Dabei gibt es verschiedene Vorraussetzungen zu beachten, sowie verschiedene Möglichkeiten die Daten zu transformieren.\\
+    
+    \noindent
+    Bei konventionellen Neuronalen Netzen werden Eigenschaften Objekten zugewiesen, wobei alle Objekte mit denselben Eigenschaften betitelt werden.
+    Ein Beispiel dafür sind Tiere, bei denen anhand von Reproduktion oder Atmung in Säugetiere, Vögel, Reptilien, etc. eingeteilt wird. 
+    So können spezielle Tiere wie ein Hund in eine dieser Klassen zugewiesen werden.
+    Alle klassifizierten Tiere werden hierbei dieselben Eigenschaftsklassen mit unterschiedlichen Werten zugewiesen.
+    Das heißt, dass einem Hund oder einer Taube die Anzahl der Beine und die Reproduktion zugewiesen werden jedoch mit jeweils unterschiedlichen Werten.\\
+    
+    Durch die in Kapitel \ref{Messdaten} beschriebene Erhebung der Daten, werden die Stromdaten in einem bestimmten Format von der API bereitgestellt.
+    Es werden 2 verschiedene Listen zurückgegeben wobei eine die reinen Messdaten enthält und die andere die Labels für diese Daten.\\
+    Die reinen Messdaten werden zusammengetragen, indem zu den gelabelten Zeiträumen jeweils alle sekündlich gemessenen Werte des Stromnetzes als eine Matrix eingefügt werden.
+    Somit ergibt sich eine drei dimensionale Matrix welche inder ersten Dimension die Zeiträume abbildet, in der zweiten Dimension die sekündliche Zeitreihe und die dritte die vorhandenen physikalischen Größen.
+
+    \begin{lstlisting}[language=Python, caption={Datenstruktur der gelabelten Messdaten, die von der API bereit gestellt wird},label=lst:DatenstrukturGelabelteMessdaten]
+
+[
+    [
+        [u, f, h3, h5, h7, h9, h11, h13, h15],
+        [u, f, h3, h5, h7, h9, h11, h13, h15],
+        [u, f, h3, h5, h7, h9, h11, h13, h15],
+        ...
+    ]
+]
+    \end{lstlisting}
+
+
+    
+    % batches von 20 / 30 / 60
+    % überlappende batches
+    % 1 batch von 20 Datenpunkten pro sekunde --> mehr daten und höhere genauigkeit beim späteren klassifizieren
+    % Untransformierte Daten
+    % Ableitungen da Verlauf bzw. Kurve entscheidend und nicht rein Werte wie bei Bildern
+    % Normalisieren auf Werte zwischen 0 und 1 um Matrizen besser auswerten zu können
+
 
 \section{Trainingsprozess}
 
 \section{Auswertung der Ergebnisse}
+    % verschiedene Batch größen vergleichen
+    % verschiedene neuronale Netze vergleichen CNN, RNN, CNN + RNN
+    % vllt. verschiedene Aktivierungsfunktionnen Sigmoid / Cross-Entropie / Binary Cross-Entropie

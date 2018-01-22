@@ -4,7 +4,7 @@
 
 \section{Physikalische Grundlagen zur Netzaktivität} \label{physikalischeGrundlagen}
 
-\section{Erhebung der Messdaten}
+\section{Erhebung der Messdaten} \label{Messdaten}
 
     Um aussagekräftige Analysen und Klassifikationen über ein Stromnetz bzw. die Geräte in einem Stromnetz mit Maschinellem Lernen machen zu können, werden viele Trainings- und Testdaten benötigt.
     Die Daten bestehen aus verschiedenen physikalische Größen, die zu einem bestimmten Zeitpunkt in einem Stromnetz auftreten.
@@ -12,11 +12,16 @@
     Um einen allgemeinen Überblick über den Verlauf der Netzaktivität zu erhalten sowie verschiedene Zeiten und Geräte vergleichen zu können, müssen Daten über lange Zeiträume erhoben werden.\\
     \newline
     Zur Erhebung der Werte zur Netzaktivität wurde ein WeSense-Messgerät\footnote{http://www.wesense-app.com/home-en/} verwendet.
-    Dieses Gerät misst alle benötigten Werte und sendet diese über einen MQTT-Broker an einen Service von WeSense, welcher dann die Daten aufbereitet und in einer MSSQL Datenbank abspeichert.
+    Dieses Gerät misst alle benötigten Werte und sendet diese über einen MQTT-Broker\footnote{Message Queuing Telemetry Transport} an einen Service von WeSense, welcher dann die Daten aufbereitet und in einer MSSQL Datenbank abspeichert.
     Die Werte werden sekündlich gemessen und in die Datenbank gespeichert, weshalb zunächst in eine row-based Datenbank gespeichert wird und später dann die Daten in eine column-based Datenbank zur schnellen Abfrage überführt werden.
     \newline
 
-    Architektur Bild!!
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=1.0\textwidth]{Architecture}
+        \caption{Complete Architecture}
+        \label{fig:Architecture}
+    \end{figure}
 
     \subsection{Klassifikation der Messdaten}
         
