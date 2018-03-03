@@ -10,7 +10,7 @@
 
     \noindent
     Dieses Kapitel beschäftigt sich mit diesen Fragen und gibt einen kurzen Überblick über heutige Verfahren von Maschinellem Lernen.
-    
+
     \subsection{Künstliche Intelligenz}
     Bevor Maschinelles Lernen erklärt werden kann sollte Künstliche Intelligenz im allgemeinen geklärt werden.
 
@@ -19,28 +19,36 @@
     Nimmt man den Begriff Maschinelles Lernen wörtlich beschreibt er das Lernen einer Maschine, also die Fähigkeit einer Maschine inteligenter zu werden.
     Von Maschinellem Lernen spricht man, falls eine Maschine auf Basis von Erfahrung und Fakten "ohne speziell programiert worden zu sein"\cite[20]{HandsOnML}, neues Wissen oder neue Zusammenhänge generieren kann.
     Wenn eine Maschine nachdem sie etwas gelernt hat bei der Ausführung einer Aktivität besser geworden ist, hat die Maschine maschinel gelernt\cite[20]{HandsOnML}.
-    Das reine auswendig lernen von Fakten, wie beispielsweise das abspeichern einer Wikipedia-Seite auf die lokale Festplatte eines Computers, ist kein Wissenserwerb. 
+    Das reine auswendig lernen von Fakten, wie beispielsweise das abspeichern einer Wikipedia-Seite auf die lokale Festplatte eines Computers, ist kein Wissenserwerb.
     \newline
 
     \noindent
-    Ein Beispiel für Maschinelles Lernen ist zum Beispiel der Spamfilter bei Emails. 
+    Ein Beispiel für Maschinelles Lernen ist der Spamfilter bei Emails.
     Hier lernt ein Computer auf Basis von bisherigen Spammails neue Emails als Spam zu erkennen.
-    
+    \newline
+
+    Der Einsatz von Maschinellem Lernen hat meist Vorteile gegenüber herkömmlichen Statistischen Methoden falls große Datenmengen ausgewertet werden müssen
+    oder kein bekanntes Modell zur Problemlösung bekannt ist.
+    Durch Maschinelles Lernen können Zusammenhänge erkannt werden, die durch andere statistische oder algorithmische Verfahren nicht erkannt oder abgebildet werden können.
+
     \subsection{Lernprozess}
     Grundlegend besteht Maschinelles Lernen aus einer Trainigsphase und einer Test- beziehungsweise Validierungsphase.
     In der Trainigsphase wird auf Basis von Daten, wie bisherige Emails eines Benutzers, ein Modell erstellt, welches dann in der Validierungsphase auf seine Genauigkeit überprüft wird.
-    Aus dem Ergebnis der Validierungsphase sowie der sonstigen Wissensbasis kann nun eine neue Trainsphase durchgeführt werden.
+    Aus dem Ergebnis der Validierungsphase sowie der sonstigen Wissensbasis kann nun eine neue Trainsphase durchgeführt werden(vgl. \ref{fig:MLTrainigsprozess}).
     \newline
 
     \noindent
-    Dieser Prozess kann nun beliebig oft wiederholt werden und das Modell weiter verbessert werden.
+    Dieser Prozess wird Epoche genannt und kann nun beliebig oft wiederholt werden und das Modell weiter verbessert werden.
     Das entstandene Modell ist das neu generierte Wissen.
 
     % Schaubild zu testphasen hinzufügen
 
 
     \subsection{Neuronale Nezte}
-    
+
+    \subsection{Anwendungsgebiete}
+    Weitere große Anwendungsgebiete für Maschinelles Lernen sind Spracherkennung, Bilderkennung
+
 
 
 \section{Physikalische Grundlagen zur Netzaktivität} \label{physikalischeGrundlagen}
@@ -65,7 +73,7 @@
     \end{figure}
 
     \subsection{Klassifikation der Messdaten}
-        
+
         Durch die oben beschriebene Erhebung sind die physikalischen Werte zu bestimmten Zeitpunkten bestimmt worden.
         Zusätzlich wird nun zur Identifikation der Geräte sowie zum Maschinellen Lernen, genau definierte Zeiträume benötigt in denen bestimmte Geräte aktiv waren.
         Dies bedeutet, dass jedem Zeitpunkt ein oder mehrere Geräte zugewiesen werden. \\
@@ -83,12 +91,12 @@
             \caption{Screenshot der progressive Web-App}
             \label{fig:WebApp1}
         \end{figure}
-    
+
 \section{Visualisierung}\label{VisualisierungWebApp}
 
         Zusätzlich zur manuellen Erhebung der Daten wurden zur besseren Analyse der Daten verschiedene Visualisierungsmöglichkeiten implementiert.
         Zum einen können die verschiedenen Physikalischen Größen eines gelabelten Gerätes zu einem bestimmten Zeitpunkt miteinander verglichen werden.
-        Außerdem können bestimmte Größen zu verschiedenen gelabelten Zeiträumen eines Gerätes verglichen und analysiert werden. 
+        Außerdem können bestimmte Größen zu verschiedenen gelabelten Zeiträumen eines Gerätes verglichen und analysiert werden.
         Durch diese Visualisierung können sehr gut und genau Gemeinsamkeiten in verschiedenen Größen oder Zeiten erkannt werden.\\
         \newline
         Es werden verschiedene Diagramme sowie Normalisierungen der Daten zur Analyse bereitgestellt.
@@ -101,4 +109,3 @@
             \caption{Screenshot eines gelabelten Zeitraumes aus der Web-App}
             \label{fig:WebApp2}
         \end{figure}
-        
