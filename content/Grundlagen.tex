@@ -44,7 +44,63 @@
     % Schaubild zu testphasen hinzufügen
 
 
-    \subsection{Neuronale Nezte}
+    \section{Neuronale Netze}
+    Neuronale Netze sind eine Form von Machinellem Lernen und die heute am meisten eingesetzte Technik.
+    
+    \subsection{Aufbau}
+    Ein künstliches Neuronales Netz ist an das menschliche Gerhin angelehnt und soll dessen neuronales Netz sowie dessen Verhalten abbilden. 
+    Dementsprechend besteht ein solches Netz aus mehren Neuronen und Schichten von Neuronen welche über Synapsen miteinander verbunden sind.
+
+
+    \subsubsection{Neuronen}
+    Neuronen bestehen aus Eingängen, auch Dendriten gennant, welche durch eine Eingangsfunktion, eine Aktivierungsfunktionen sowie eine Ausgabefunktion geleitet werden.
+    Die Ausgabe eines Neurons besteht daraus dass dieses je nach Eingabe und Art entweder angereg("gefeuert") wird oder nicht.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{AufbauNN}
+        \caption{Aufbau eines Neurons}
+        \label{fig:AufbauNN}
+    \end{figure}
+    
+    \noindent
+    Die Eingangsfunktion berechnet aus den verschiedenen Eingängen den effektiven Eingang welcher dann weiter von der Aktivierungsfunktion verarbeitet wird.
+    Diese effektive Eingabe ist dann die Netzeingabe in das Neuron.
+    Meist wird die Netzaktivität \(net\) einfach als Summe aller Eingänge \(x\) und deren Gewichtungen \(w\) errechnet:
+    \begin{equation}
+        net = \sum_{i=0}^N x_i w_i
+    \end{equation}
+    \newline
+
+    \noindent
+    Die Aktivierungsfunktion dient zur eigentlichen Auswertung der Eingabe bzw. Netzaktivität.
+    Die Aktivierungsfunktionen erzeugt ein Aktiverungspotential welches von der Ausgangsfunktion ausgewertet wird.
+    \newline
+    
+    \noindent
+    Die Ausgangsfunktion entscheidet schlussendlich ob das Neuron angeregt wird oder nicht.
+    Hierzu wird geprüft ob das Aktivierungspotential der Aktivierungsfunktion einen bestimmten Schwellenwert übersteigt.
+    Dieser Schwellenwert wird mithilde einer Schwellenwertfunktion errechnet. 
+    Die Schwellenwertfunktion muss monoton wachsend sein, kann jedoch verschiedene Formen annehmen. 
+    Sie kann linear Verlaufen wie es beim Perzeptron der Fall ist oder exponentiell. 
+    Durch eine .. Funktion wie die Sigmoid-Funktion lassen sich mächtigere Neuronale Netze entwickeln weshalb heuzutage meist eine soclhe zum EInsatz kommt.
+
+
+    \subsubsection{Verbindungen}
+    Diese Neuronen sind über Synapsen welche bestimmte Kantengewichte bzw. Biases haben.
+    
+
+    Das einfachste Nueronale Netz ist ein Perzeptron, welches 1958 von Frank Rosenblatt entwickelt wurde.
+    Das Perzeptron besteht aus zwei Eingabeparametern, welche in ein Neuron gegeben werden und von diesem mithilfe der Kantengewichte und der Aktivierungsfunktion eine Ausgabe liefert.
+
+    Ein Beispiel ist die Abbildung des boolschen "Und"-Operators welche wie in Abbildung( Perzeptron abbildung einfügen) mit einem Neuron dargestellt werden kann.
+    Jedoch können mit einem Neuron nur sehr einfache Funktionen abgebildet werden. 
+    Komplexere Funktionen können über mehrere Neuronen abgebildet werden.
+
+    \subsection{Lernen}
+
+    \subsection{CNN - Convolutional Neural Network}
+    \subsection{RNN - Recurrent Neural Network}
 
     \subsection{Anwendungsgebiete}
     Weitere große Anwendungsgebiete für Maschinelles Lernen sind Spracherkennung, Bilderkennung
