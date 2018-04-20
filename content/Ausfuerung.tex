@@ -5,7 +5,7 @@
     Außerdem wurde eine Mikrowelle als zweite Gerät mit wenigen Daten gewählt um verschiedene Parameter und Kennzahlen zu vergleichen.
     Hierbei soll die Anzahl der Daten sowie die Klassifikation von mehreren Geräten innerhalb eines Neuronalen Netzes untersucht werden.
 
-\section{Manuelle Analyse}
+\section{Manuelle Analyse} \label{ManuelleAnalyse}
 
     Zur manuellen Analyse der Daten wird das in \ref{VisualisierungWebApp} beschriebene Tool verwendet.
     Zunächst werden sehr aussagenkräftige Größen wie die Spannung oder die Frequenz der Kaffeemaschine verwendet und mit anderen aktiven Zeiträumen der Kaffeemaschine verglichen.
@@ -48,14 +48,11 @@
 
     \noindent
     Wie dieser Abschnitt zeigt können schon mit bloßen Auge bestimmte Auswirkungen der verschiedenen Geräte erkannt werden.
-    Auch wenn einige Störungen auftreten und den Verlauf verfälschen sollte es dennoch möglich sein diese Geräte herauszufiltern.
-    Weiterführend wird dieser Prozess automatisiert und zu verbessert um auch trotz großer Störungen, Geräte präzise Klassifizieren zu können. 
+    Auch wenn einige Störungen auftreten und den Verlauf verfälschen, sollte es dennoch möglich sein diese Geräte herauszufiltern.
+    Weiterführend wird dieser Prozess automatisiert und verbessert um auch trotz großer Störungen, Geräte präzise klassifizieren zu können. 
 
-\section{Neuronales Netz}
-
-
-\section{Vorbereiten der Daten}
-    Um Klassifizierung der Geräte auf neuronalen Netzen abzubilden müssen die vorhandenen Daten in ein geeignetes Format transformiert werden.
+\section{Vorbereiten der Daten}\label{VorbereitenDerDaten}
+    Um die Klassifizierung der Geräte auf neuronalen Netzen abzubilden müssen die vorhandenen Daten in ein geeignetes Format transformiert werden.
     Dabei gibt es verschiedene Vorraussetzungen zu beachten, sowie verschiedene Möglichkeiten die Daten zu transformieren.\\
     
     \noindent
@@ -81,6 +78,52 @@
     ]
 ]
     \end{lstlisting}
+
+\section{Neuronales Netz}
+    Wie Abschnitt \ref{ManuelleAnalyse} zeigt ist es möglich mit herkömmlichen manuellen Methoden verschiedene Geräte innerhalb eines Verlaufs zu klassifzieren.
+    Somit sollte dies auch mit maschinellem Lernen möglich sein.
+    \newline
+
+    \noindent
+    Um nun die Geräte maschinell zu klassifiziren, werden drei verschiedene "`neuronale Netz"' Modelle erstellt und miteinander verglichen.
+    Die drei Modelle beinhalten ein "`Recurrent Neural Network(RNN) "', ein "`Convolutional Neural Network(CNN)"' sowie eine Mischung aus diesen Ansätzen. 
+    Da Neuronale Netze feste Eingabegrößen benötigen, werden die Daten wie im Abschnitt \ref{VorbereitenDerDaten} in Batches aufgeteilt.
+    Um die bestmöglichste Batchgröße zu erreichen werden verschiedene Größen getestet.
+
+    \subsubsection{CNN}
+    Grundlegend besteht das "`Convolutional Neural Network(CNN)"' aus einem "`Input Layer"', drei "`Convolutional Layers"', einem "`Dropout Layer"' sowie einem "`Output Layer"'.
+    \newline
+
+    \noindent
+    Das "`Input Layer"' ist der Eingang zum neuronalen Netz, welcher die Rohdaten annimmt und an das eigentliche Netz weiterleitet. 
+    Es nimmt einen Eingabe-Tensor (Matrix innerhalb eines neuronalen Netzes), welcher an die Batchgröße angepasst wird.
+    \newline
+
+    \noindent
+    Die Eingabe wird dann weitergeleitet an die drei "`Convolutional Layers"', welche mit unterschiedlicher "`Hidden Layer"'-Größe initialisiert werden.
+    Wobei die "`Hidden Layer"' größer werden je näher sie topologisch an dem "`Output Layer"' liegen.
+    \newline
+
+    \noindent
+    Das "`Dropout Layer"' wird eingefügt um die Tensordimension zu verkleinern und somit das Ergebnis zu Generalisieren und Overfitting zu vermeiden.
+    \newline
+
+    \noindent
+    Das "`Output Layer"' wandelt nun die Erkenntnisse der vorherigen Schichten in ein lesbares Fomat um. 
+    Hierzu wird ein "`Dense Layer"', welcher ein eindimensionaler Tensor mit einem Feld pro klassifizierbaren Objekt. 
+    Dies bedeutet, dass dieser Tensor bei einem Klassifizierung von zwei Geräten ein Array mit der Größe 2 ist. 
+    \newline
+
+    \noindent
+    
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{CNN_Model}
+        \caption{Convolutional Neural Network}
+        \label{fig:CNN_MODEL}
+    \end{figure}
+
 
 
     
