@@ -81,7 +81,7 @@
 
     Da Neuronale Netze feste Eingabegrößen benötigen, werden die Daten in Batches aufgeteilt.
     Batches bedeutet, dass die Zeitreihe in gleich große Abschnitte aufgeteilt wird.
-    Dementsprechend wird die Matrix der Dimension \( A[m, n, 9] \), zu einer Matrix mit einheitlicher Größe transfomiert, sodass die ensthende Matrix zum Beispiel die Dimension \( B[m, 20, 9] \) annimt.
+    Dementsprechend wird die Matrix \( A[m, n, 9] \), zu einer Matrix mit einheitlicher Größe transfomiert, sodass die enstehende Matrix zum Beispiel die Form \( B[m, 20, 9] \) annimt.
     \newline
 
     \noindent
@@ -113,18 +113,20 @@
     \noindent
     Um nun die Geräte maschinell zu klassifiziren, werden drei verschiedene "`neuronale Netz"' Modelle erstellt und miteinander verglichen.
     Die drei Modelle beinhalten ein "`Recurrent Neural Network(RNN) "', ein "`Convolutional Neural Network(CNN)"' sowie eine Mischung aus diesen Ansätzen. 
+    Bei allen Modellen wurde als Gradientenverfahren die Adam-Optimierung gewählt, da diese bei mehr Rechenaufwand bessere Ergebnisse erzielt.
     \newline
 
     \noindent
     
 
     \subsubsection{CNN}
-    Grundlegend besteht das "`Convolutional Neural Network(CNN)"' aus einem "`Input Layer"', drei "`Convolutional Layers"', einem "`Dropout Layer"' sowie einem "`Output Layer"'.
+    Grundlegend besteht das \ac{CNN} aus einem "`Input Layer"', drei "`Convolutional Layers"', einem "`Dropout Layer"' sowie einem "`Output Layer"'.
     \newline
 
     \noindent
     Das "`Input Layer"' ist der Eingang zum neuronalen Netz, welcher die Rohdaten annimmt und an das eigentliche Netz weiterleitet. 
-    Es nimmt einen Eingabe-Tensor (Matrix innerhalb eines neuronalen Netzes), welcher an die Batchgröße angepasst wird.
+    Es ist ein weiteres "`Convolutional Layer"' und nimmt einen Eingabe-Tensor (Matrix innerhalb eines neuronalen Netzes), welcher an die Batchgröße angepasst ist.
+    Dementsprechend hat der Eingabetensor die Form \( A[m, b, 9] \), mit m: Trainingsdatengröße und b: Batchgröße.
     \newline
 
     \noindent
@@ -139,11 +141,7 @@
     \noindent
     Das "`Output Layer"' wandelt nun die Erkenntnisse der vorherigen Schichten in ein lesbares Fomat um. 
     Hierzu wird ein "`Dense Layer"', welcher ein eindimensionaler Tensor mit einem Feld pro klassifizierbaren Objekt ist. 
-    Dies bedeutet, dass dieser Tensor bei einem Klassifizierung von zwei Geräten ein Array mit der Größe 2 ist. 
-    \newline
-
-    \noindent
-    
+    Dies bedeutet, dass dieser Tensor bei einem Klassifizierung von zwei Geräten ein Array mit der Größe 2 ist.     
     
     \begin{figure}[H]
         \centering
@@ -152,6 +150,12 @@
         \label{fig:CNN_MODEL}
     \end{figure}
 
+    \subsubsection{RNN}
+    Das "`Recurrent Neural Network(RNN) "'- Model besteht aus einem "`Input Layer"', zwei darauffolgende "`LSTM(Long short-term memory) Layer"' und einem "`Ouput Layer"'.\\
+    \noindent
+    Das "`Input Layer"' ist ein weitereres "`LSTM Layer"' welche denselben Eingabetensor annimt, wie das CNN-Model.\\
+    \noindent
+    Es folgen zwei weitere "`LSTM Layer"' mit derselben "`Hidden Layer"'-Größe, wie des Eingabe-"`LSTM Layers"'.
 
     \begin{figure}[H]
         \centering
