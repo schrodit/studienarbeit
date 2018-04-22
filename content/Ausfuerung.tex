@@ -79,6 +79,32 @@
 ]
     \end{lstlisting}
 
+    Da Neuronale Netze feste Eingabegrößen benötigen, werden die Daten in Batches aufgeteilt.
+    Batches bedeutet, dass die Zeitreihe in gleich große Abschnitte aufgeteilt wird.
+    Dementsprechend wird die Matrix der Dimension \( A[m, n, 9] \), zu einer Matrix mit einheitlicher Größe transfomiert, sodass die ensthende Matrix zum Beispiel die Dimension \( B[m, 20, 9] \) annimt.
+    \newline
+
+    \noindent
+    Um diese neue Matrix zu erhalten wird folgender Algorithmus auf die alte Matrix angewandt:
+
+    \begin{algorithm}
+        \caption{Batch Generierung}
+        \begin{algorithmic}[1]
+        \Function{GeneriereBatches}{$A,b$}\Comment{A - Matrix, b - Batchgröße}
+            \State ${B} = []$
+            \For{$i = 0$ to $length(A)$}
+                \For{$j = 0$ to $length(A[i]) - b$}
+                    \State $start = j$
+                    \State $end = j + b$ 
+                    \State $I_b = length(B) + 1$
+                    \State $B[I_b] = A[i][start : end]$
+                \EndFor
+            \EndFor
+            \State return $B$
+        \EndFunction
+        \end{algorithmic}
+    \end{algorithm}
+
 \section{Neuronales Netz}
     Wie Abschnitt \ref{ManuelleAnalyse} zeigt ist es möglich mit herkömmlichen manuellen Methoden verschiedene Geräte innerhalb eines Verlaufs zu klassifzieren.
     Somit sollte dies auch mit maschinellem Lernen möglich sein.
@@ -87,8 +113,10 @@
     \noindent
     Um nun die Geräte maschinell zu klassifiziren, werden drei verschiedene "`neuronale Netz"' Modelle erstellt und miteinander verglichen.
     Die drei Modelle beinhalten ein "`Recurrent Neural Network(RNN) "', ein "`Convolutional Neural Network(CNN)"' sowie eine Mischung aus diesen Ansätzen. 
-    Da Neuronale Netze feste Eingabegrößen benötigen, werden die Daten wie im Abschnitt \ref{VorbereitenDerDaten} in Batches aufgeteilt.
-    Um die bestmöglichste Batchgröße zu erreichen werden verschiedene Größen getestet.
+    \newline
+
+    \noindent
+    
 
     \subsubsection{CNN}
     Grundlegend besteht das "`Convolutional Neural Network(CNN)"' aus einem "`Input Layer"', drei "`Convolutional Layers"', einem "`Dropout Layer"' sowie einem "`Output Layer"'.
@@ -105,12 +133,12 @@
     \newline
 
     \noindent
-    Das "`Dropout Layer"' wird eingefügt um die Tensordimension zu verkleinern und somit das Ergebnis zu Generalisieren und Overfitting zu vermeiden.
+    Das "`Dropout Layer"' wird eingefügt um die Tensordimension zu verkleinern und somit das Ergebnis zu generalisieren und Overfitting zu vermeiden.
     \newline
 
     \noindent
     Das "`Output Layer"' wandelt nun die Erkenntnisse der vorherigen Schichten in ein lesbares Fomat um. 
-    Hierzu wird ein "`Dense Layer"', welcher ein eindimensionaler Tensor mit einem Feld pro klassifizierbaren Objekt. 
+    Hierzu wird ein "`Dense Layer"', welcher ein eindimensionaler Tensor mit einem Feld pro klassifizierbaren Objekt ist. 
     Dies bedeutet, dass dieser Tensor bei einem Klassifizierung von zwei Geräten ein Array mit der Größe 2 ist. 
     \newline
 
@@ -122,6 +150,21 @@
         \includegraphics[width=\textwidth]{CNN_Model}
         \caption{Convolutional Neural Network}
         \label{fig:CNN_MODEL}
+    \end{figure}
+
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{RNN_Model}
+        \caption{Recurrent Neural Network}
+        \label{fig:RNN_MODEL}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{MIX_Model}
+        \caption{Convolutional Neural Network with Recurrent Neural Network}
+        \label{fig:MIX_MODEL}
     \end{figure}
 
 
