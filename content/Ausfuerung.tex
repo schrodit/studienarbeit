@@ -90,8 +90,8 @@
     \begin{algorithm}
         \caption{Batch Generierung}
         \begin{algorithmic}[1]
-        \Function{GeneriereBatches}{$A,b$}\Comment{A - Matrix, b - Batchgröße}
-            \State ${B} = []$
+        \Function{GeneriereBatches}{$A,b$}\Comment{A - float[][][], b - int (Batchgröße)}
+            \State ${B} = Array[][][]$
             \For{$i = 0$ to $length(A)$}
                 \For{$j = 0$ to $length(A[i]) - b$}
                     \State $start = j$
@@ -140,8 +140,8 @@
 
     \noindent
     Das "`Output Layer"' wandelt nun die Erkenntnisse der vorherigen Schichten in ein lesbares Fomat um. 
-    Hierzu wird ein "`Dense Layer"', welcher ein eindimensionaler Tensor mit einem Feld pro klassifizierbaren Objekt ist. 
-    Dies bedeutet, dass dieser Tensor bei einem Klassifizierung von zwei Geräten ein Array mit der Größe 2 ist.     
+    Hierzu wird ein "`Dense Layer"' verwendet, welcher ein eindimensionaler Tensor mit einem Feld pro klassifizierbaren Objekt ist und die Softmax-Funktion als Aktivierungsfunktion beinhaltet.
+    Dieser eindimensionale Tensor repräsentiert pro Feld die Ausgabe pro zu klassifizierendem Gerät.     
     
     \begin{figure}[H]
         \centering
@@ -155,7 +155,12 @@
     \noindent
     Das "`Input Layer"' ist ein weitereres "`LSTM Layer"' welche denselben Eingabetensor annimt, wie das CNN-Model.\\
     \noindent
-    Es folgen zwei weitere "`LSTM Layer"' mit derselben "`Hidden Layer"'-Größe, wie des Eingabe-"`LSTM Layers"'.
+    Es folgen zwei weitere "`LSTM Layer"' einer "`Hidden Layer"'-Größe von 64 pro Schicht.
+    Dieselbe Größe wird auch im Eingabe-"`LSTM Layers"' verwendet.
+    \newline
+
+    \noindent
+    Das "`Output Layer"' ist, wie beim \ac{CNN}-Model, ein "`Dense Layer"', der aus der Berechnung des Netzes eine verwertbare Ausgabe erzeugt.
 
     \begin{figure}[H]
         \centering
@@ -164,13 +169,22 @@
         \label{fig:RNN_MODEL}
     \end{figure}
 
+    \subsubsection{Mixed - CNN und RNN}
+    Das dritte zu testende Model beinhaltet eine Mischung aus den zwei bisherigen Netzen. 
+    Dies soll zeigen, ob verschiedene Eigenschaften von neuronalen Netzen, positive oder negative Auswirkungen auf das Training und die Genauigkeit des Models haben.
+    \newline
+
+    \noindent
+    Da dieses Model eine Mischform aus \ac{CNN} und \ac{RNN} ist, besteht diese Model aus zwei "`Convolutional Layers"', welche die Eingabe und eine Vorprozessierung zum Generalisieren der Eingabe darstellt.
+    Auf diese beiden Schichten folgen nun zwei rekurrente "`LSTM Layer"' und dasselbe "`Output Layer"' wie bei beiden anderen Modellen.
+    Die \ac{RNN}-Schichten sollen nun das Vorprozessierte verarbeiten und mögliche Muster in der Zeitserie erkennen.     
+
     \begin{figure}[H]
         \centering
         \includegraphics[width=\textwidth]{MIX_Model}
         \caption{Convolutional Neural Network with Recurrent Neural Network}
         \label{fig:MIX_MODEL}
     \end{figure}
-
 
 
     
@@ -188,3 +202,59 @@
     % verschiedene Batch größen vergleichen
     % verschiedene neuronale Netze vergleichen CNN, RNN, CNN + RNN
     % vllt. verschiedene Aktivierungsfunktionnen Sigmoid / Cross-Entropie / Binary Cross-Entropie
+
+
+    \begin{algorithm}
+        \caption{Ergbnisauswertung}
+        \begin{algorithmic}[1]
+        \Function{EvaluatePrediction}{$P,b$}\Comment{P - int[][] (Ergebnis eines neuronalen Netzes), b - int (Batchgröße)}
+            \State ${A} = int[]$
+            \For{$i = 0$ to $length(P)$}
+                \State $ClassesHit = int[]$\Comment{Hit-Punkte aller Klasse der Prediction für den aktuellen Zeitpunkt}
+                \State $ClassesPerc = float[]$\Comment{Wahrscheinlichkeit aller Klasse der Prediction für den aktuellen Zeitpunkt}
+
+                \If{$i < b$}
+                    \State $start = 0$
+                    \State $end = i$
+                \Else
+                    \State $start = i - b$
+                    \State $end = i$
+                \EndIf
+
+                \For{$d = start$ to $end$}
+                    \State $maxClassIndex = argmax(pred[d])$
+                    \State $ClassesHit[maxClassIndex]++$
+
+                    \For{$w = 0$ to $pred[d]$}
+                        \State $ClassesPerc[w] = ClassesPerc[w] + pred[d][w]$
+                    \EndFor
+                \EndFor
+
+                \State $A.append(EvaluateClassesOfPoint(ClassesHit, ClassesPerc))$
+
+            \EndFor
+            \State return $A$
+        \EndFunction
+
+        \Function{EvaluateClassesOfPoint}{$ClassesHit, ClassesPerc$}\Comment{ClassesHit - int[], ClassesPerc - float[]}
+            
+            \State $MaxHitClass = argmax(ClassesHit)$
+            \State $MaxPercClass = argmax(ClassesPerc)$
+
+            \If{$MaxHitClass == MaxPercClass$}
+                \State return $MaxHitClass$
+            \Else
+
+                \State $MaxHitClassPerc = ClassesHit[MaxHitClass] / Sum(ClassesHit) $
+                \State $MaxPercClassPerc = MaxPercClass[MaxHitClass] / Sum(ClassesPerc) $
+
+                \If{$$MaxHitClassPerc < MaxPercClassPerc$$}
+                    \State return $MaxPercClass$
+                \Else
+                    \State return $MaxPercClass$
+                \EndIf
+
+            \EndIf
+        \EndFunction
+        \end{algorithmic}
+    \end{algorithm}
