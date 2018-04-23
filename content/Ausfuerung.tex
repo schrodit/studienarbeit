@@ -207,6 +207,17 @@
     Dies geschieht durch Trainieren dieser Modelle mit den in Abschnitt \ref{VorbereitenDerDaten} vorbereiteten Daten(vgl. Abschnitt \ref{KlassifikationDerMessdaten}).
     Damit die Modelle bestmögliche Ergebnisse erzielen, wird der Trainigsporzess mit verschiedenen Traningsparameter sowie verschiedenen Daten durchlaufen.
     Die Trainigsparameter beinhalten die Batchgöße, die Anzahl der "`Hidden Layers"', die Anzahl der zusätzlich gewählten Zeiträume sowie die genutzten physikalischen Größen.
+    \newline
+
+    \noindent
+    Nach einigen Traingsversuchen mit verschiedenen Trainingsparamtern und Rohdaten wurde festgestellt, dass keine aussagekräftigen Ergebnisse erziehlt werden können.
+    Da verschiedene Trainingsparamter keine großen Unterschiedene in den Ergebnissen erzielen, werden verschiedene Transformationen der Rohdaten getestet.
+    Als Transfomration der Daten werden zwei verschiedene Verfahren gewählt. \\
+    \noindent
+    Zum einen könnte eine Normalisierung der Daten in Werte zwischen 0-1 durchgeführt werden, sodass größere Werte wie die Spannung, welche bei ca. 230V liegt, keinen höheren Einfluss auf das Ergebnis haben kann als die Frequenz.\\
+    \noindent
+    Eine weitere Möglichkeit die Rohdaten zu transformieren ist die Ableitung über alle Werte zu errechnen und die entstandene neue Kurve zu klassifizieren.
+    Somit wird vom neuronalen Netz der Verlauf der Kurve berücksichtigt um Geräte zu erkennen und nicht die reinen Rohwerte, welche je nach Netzwerk aktueller Aktivität stark abweichen kann.
     
 
 \section{Auswertung der Ergebnisse}
