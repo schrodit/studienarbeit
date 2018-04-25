@@ -225,7 +225,7 @@
 
     Lernrate = 0.001\\
     \noindent
-    Datentype = ['u', 'h3', 'h5', 'h7', 'h9', 'h11', 'h13', 'h15']\\
+    Datentypen = ['u', 'h3', 'h5', 'h7', 'h9', 'h11', 'h13', 'h15']\\
     \noindent
     Epochen = 30\\
     \noindent
@@ -237,47 +237,211 @@
             \hline
             Model & Batchgröße & Genauigkeit & Validierungsgenauigkeit \\
             \hline
-            CNN & 20 & 0.966273284732199 & 0.951680388716426 \\
+            CNN & 20 & 96,62\% & 95,16\% \\
             \hline
-            RNN & 20 & 0.8468702996644684 & 0.8470778782883545 \\ 
+            RNN & 20 & 84,68\% & 84,70\% \\ 
             \hline
-            MIX & 20 & 0.8953488372093024 & 0.8924281279605352 \\ 
+            MIX & 20 & 89,53\% & 89,24\% \\ 
             \hline
-            CNN & 30 & 0.9797050147492625 & 0.9505849965588438 \\ 
             \hline
-            RNN & 30 & 0.8931563422180558 & 0.8902959394356503 \\ 
+            CNN & 30 & 97,97\% & 95,05\% \\ 
             \hline
-            MIX & 30 & 0.9428908554923922 & 0.9296627666896077 \\ 
+            RNN & 30 & 89,31\% & 89,02\% \\ 
             \hline
-            CNN & 40 & 0.9885078219013237 & 0.9894722066254913 \\ 
+            MIX & 30 & 94,28\% & 92,96\% \\ 
             \hline
-            RNN & 40 & 0.9285800240673887 & 0.920550252633574 \\ 
             \hline
-            MIX & 40 & 0.9690734055354994 & 0.9692588433129676 \\ 
+            CNN & 40 & 98,85\% & 98,94\% \\ 
             \hline
-            CNN & 50 & 0.9921453117329406 & 0.9695017182130584 \\ 
+            RNN & 40 & 92,85\% & 92,05\% \\
             \hline
-            RNN & 50 & 0.9582106038291606 & 0.9621993127147767 \\ 
+            MIX & 40 & 96,90\% & 96,92\% \\ 
             \hline
-            MIX & 50 & 0.9874815905743741 & 0.9879725085910653 \\ 
             \hline
-            CNN & 60 & 0.9949292600475773 & 0.9163014899385348 \\ 
+            CNN & 50 & 99,21\% & 96,95\% \\ 
             \hline
-            RNN & 60 & 0.9661950669838487 & 0.9639205375401695 \\ 
+            RNN & 50 & 95,82\% & 96,21\% \\ 
             \hline
-            MIX & 60 & 0.9917365719293852 & 0.9899211218229623 \\ 
+            MIX & 50 & 98,74\% & 98,79\% \\ 
+            \hline
+            \hline
+            CNN & 60 & 99,49\% & 91,63\% \\ 
+            \hline
+            RNN & 60 & 96,61\% & 96,39\% \\ 
+            \hline
+            MIX & 60 & 99,17\% & 98,99\% \\
             \hline
         \end{tabular}
         \caption{Ergebnis: Batchgröße}
         \label{tabl:ErgebnisBatchsize}
     \end{table}
 
+    \subsubsection{Epochen}
+
+    Lernrate = 0.001\\
+    \noindent
+    Datentypen = ['u', 'h3', 'h5', 'h7', 'h9', 'h11', 'h13', 'h15']\\
+    \noindent
+    Batchgröße = 20\\
+    \noindent
+    Ableitung = True\\
+
     \begin{table}[H]
         \centering
-        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            Model & Epochen & Genauigkeit & Validierungsgenauigkeit \\
+            \hline
+            CNN & 10 &  87,38\% & 87,36\%  \\ 
+            \hline
+            RNN & 10 &  82,01\% & 81,22\%  \\ 
+            \hline
+            MIX & 10 &  83,28\% & 82,76\% \\ 
+            \hline
+            \hline
+            CNN & 20 &  93,93\% & 92,09\%  \\ 
+            \hline
+            RNN & 20 &  84,41\% & 84,00\% \\ 
+            \hline
+            MIX & 20 &  86,68\% & 86,15\%  \\ 
+            \hline
+            \hline
+            CNN & 30 &  96,75\% & 95,72\%  \\ 
+            \hline
+            RNN & 30 &  84,88\% & 84,57\%  \\ 
+            \hline
+            MIX & 30 &  88,23\% & 87,87\%  \\ 
+            \hline
+            \hline
+            CNN & 40 &  98,18\% & 96,76\% \\ 
+            \hline
+            RNN & 40 &  85,18\% & 84,46\%  \\ 
+            \hline
+            MIX & 40 &  90,90\% & 89,72\%  \\ 
+            \hline
+            \hline
+            CNN & 50 &  98,86\% & 97,50\%  \\ 
+            \hline
+            RNN & 50 &  85,80\% & 84,80\%  \\ 
+            \hline
+            MIX & 50 &  91,93\% & 91,10\%  \\ 
+            \hline
+            \hline
+            CNN & 60 &  99,15\% & 98,58\%  \\ 
+            \hline
+            RNN & 60 &  85,67\% & 85,66\%  \\ 
+            \hline
+            MIX & 60 &  94,09\% & 90,53\%  \\ 
+            \hline
+            \hline
+            CNN & 70 &  99,39\% & 99,02\%  \\ 
+            \hline
+            RNN & 70 &  86,63\% & 86,09\%  \\ 
+            \hline
+            MIX & 70 &  94,52\% & 92,94\%  \\ 
+            \hline
+            \hline
+            CNN & 80 &  99,57\% & 99,27\%  \\ 
+            \hline
+            RNN & 80 &  86,22\% & 86,81\%  \\ 
+            \hline
+            MIX & 80 &  95,56\% & 93,98\%  \\ 
+            \hline
+            \hline
+            CNN & 90 &  99,89\% & 99,63\%  \\ 
+            \hline
+            RNN & 90 &  87,64\% & 86,67\%  \\ 
+            \hline
+            MIX & 90 &  95,96\% & 94,42\%  \\ 
+            \hline
+            \hline
+            CNN & 100 & 99,49\% & 99,37\%  \\ 
+            \hline
+            RNN & 100 & 87,29\% & 86,43\%  \\ 
+            \hline
+            MIX & 100 & 97,39\% & 96,46\% \\
+            \hline
+
         \end{tabular}
-        \caption{Ergebnis: Batchgröße}
-        \label{tabl:ErgebnisBatchsize}
+        \caption{Ergebnis: Epochen}
+        \label{tabl:ErgebnisEpoch}
+    \end{table}
+
+    \subsubsection{Lernrate}
+
+    Datentypen = ['u', 'h3', 'h5', 'h7', 'h9', 'h11', 'h13', 'h15']\\
+    \noindent
+    Batchgröße = 20\\
+    \noindent
+    Epochen = 30\\
+    \noindent
+    Ableitung = True\\
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            Model & Lernrate & Genauigkeit & Validierungsgenauigkeit \\
+            \hline
+            CNN & 0.0001 & 97,13\% & 95,55\% \\
+            \hline
+            RNN & 0.0001 & 84,54\% & 84,91\% \\
+            \hline
+            MIX & 0.0001 & 88,45\% & 88,43\% \\
+            \hline
+            \hline
+            CNN & 0.001  & 96,65\% & 93,85\% \\
+            \hline
+            RNN & 0.001  & 84,98\% & 84,34\% \\
+            \hline
+            MIX & 0.001  & 90,17\% & 89,02\% \\
+            \hline
+            \hline
+            CNN & 0.01   & 96,91\% & 93,42\% \\
+            \hline
+            RNN & 0.01   & 84,67\% & 84,84\% \\
+            \hline
+            MIX & 0.01   & 89,71\% & 89,41\% \\
+            \hline
+            \hline
+            CNN & 0.1    & 96,51\% & 95,50\% \\
+            \hline
+            RNN & 0.1    & 85,06\% & 84,62\% \\
+            \hline
+            MIX & 0.1    & 89,46\% & 88,51\% \\
+            \hline
+        \end{tabular}
+        \caption{Ergebnis: Lernrate}
+        \label{tabl:ErgebnisLernrate}
+    \end{table}
+
+    \subsubsection{Ableitung}
+
+    Lernrate = 0.001\\
+    \noindent
+    Datentypen = ['u', 'h3', 'h5', 'h7', 'h9', 'h11', 'h13', 'h15']\\
+    \noindent
+    Batchgröße = 20\\
+    \noindent
+    Epochen = 30\\
+    \noindent
+    Ableitung = True\\
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            Model & Genauigkeit & Validierungsgenauigkeit \\
+            \hline
+            CNN & 85,69\% & 85,78\% \\
+            \hline
+            RNN & 87,99\% & 86,68\% \\
+            \hline
+            MIX & 48,13\% & 48,42\% \\
+            \hline
+        \end{tabular}
+        \caption{Ergebnis: Ableitung}
+        \label{tabl:ErgebnisAbleitung}
     \end{table}
         
 
