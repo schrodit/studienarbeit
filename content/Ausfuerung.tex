@@ -219,6 +219,68 @@
     Eine weitere Möglichkeit die Rohdaten zu transformieren ist die Ableitung über alle Werte zu errechnen und die entstandene neue Kurve zu klassifizieren.
     Somit wird vom neuronalen Netz der Verlauf der Kurve berücksichtigt um Geräte zu erkennen und nicht die reinen Rohwerte, welche je nach Netzwerk aktueller Aktivität stark abweichen kann.
     
+    \subsection{Ergebnisse}
+
+    \subsubsection{Batchgröße}
+
+    Lernrate = 0.001\\
+    \noindent
+    Datentype = ['u', 'h3', 'h5', 'h7', 'h9', 'h11', 'h13', 'h15']\\
+    \noindent
+    Epochen = 30\\
+    \noindent
+    Ableitung = True\\
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            Model & Batchgröße & Genauigkeit & Validierungsgenauigkeit \\
+            \hline
+            CNN & 20 & 0.966273284732199 & 0.951680388716426 \\
+            \hline
+            RNN & 20 & 0.8468702996644684 & 0.8470778782883545 \\ 
+            \hline
+            MIX & 20 & 0.8953488372093024 & 0.8924281279605352 \\ 
+            \hline
+            CNN & 30 & 0.9797050147492625 & 0.9505849965588438 \\ 
+            \hline
+            RNN & 30 & 0.8931563422180558 & 0.8902959394356503 \\ 
+            \hline
+            MIX & 30 & 0.9428908554923922 & 0.9296627666896077 \\ 
+            \hline
+            CNN & 40 & 0.9885078219013237 & 0.9894722066254913 \\ 
+            \hline
+            RNN & 40 & 0.9285800240673887 & 0.920550252633574 \\ 
+            \hline
+            MIX & 40 & 0.9690734055354994 & 0.9692588433129676 \\ 
+            \hline
+            CNN & 50 & 0.9921453117329406 & 0.9695017182130584 \\ 
+            \hline
+            RNN & 50 & 0.9582106038291606 & 0.9621993127147767 \\ 
+            \hline
+            MIX & 50 & 0.9874815905743741 & 0.9879725085910653 \\ 
+            \hline
+            CNN & 60 & 0.9949292600475773 & 0.9163014899385348 \\ 
+            \hline
+            RNN & 60 & 0.9661950669838487 & 0.9639205375401695 \\ 
+            \hline
+            MIX & 60 & 0.9917365719293852 & 0.9899211218229623 \\ 
+            \hline
+        \end{tabular}
+        \caption{Ergebnis: Batchgröße}
+        \label{tabl:ErgebnisBatchsize}
+    \end{table}
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+        \end{tabular}
+        \caption{Ergebnis: Batchgröße}
+        \label{tabl:ErgebnisBatchsize}
+    \end{table}
+        
+
 
 \section{Auswertung der Ergebnisse}
     % verschiedene Batch größen vergleichen
