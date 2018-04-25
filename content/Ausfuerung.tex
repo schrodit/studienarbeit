@@ -96,7 +96,7 @@
     \noindent
     Um diese neue Matrix zu erhalten wird folgender Algorithmus auf die alte Matrix angewandt:
 
-    \begin{algorithm}
+    \begin{algorithm}\label{alg:BatchGenerierung}
         \caption{Batch Generierung}
         \begin{algorithmic}[1]
         \Function{GeneriereBatches}{$A,b$}
@@ -210,11 +210,11 @@
     \newline
 
     \noindent
-    Nach einigen Traingsversuchen mit verschiedenen Trainingsparamtern und Rohdaten wurde festgestellt, dass keine aussagekräftigen Ergebnisse erziehlt werden können.
+    Nach einigen Trainigsversuchen mit verschiedenen Trainingsparamtern und Rohdaten wurde festgestellt, dass keine aussagekräftigen Ergebnisse erziehlt werden können.
     Da verschiedene Trainingsparamter keine großen Unterschiedene in den Ergebnissen erzielen, werden verschiedene Transformationen der Rohdaten getestet.
     Als Transfomration der Daten werden zwei verschiedene Verfahren gewählt. \\
     \noindent
-    Zum einen könnte eine Normalisierung der Daten in Werte zwischen 0-1 durchgeführt werden, sodass größere Werte wie die Spannung, welche bei ca. 230V liegt, keinen höheren Einfluss auf das Ergebnis haben kann als die Frequenz.\\
+    Zum einen wird eine Normalisierung der Daten in Werte zwischen 0-1 durchgeführt, sodass größere Werte wie die Spannung, welche bei ca. 230V liegt, keinen höheren Einfluss auf das Ergebnis haben kann als die Frequenz.\\
     \noindent
     Eine weitere Möglichkeit die Rohdaten zu transformieren ist die Ableitung über alle Werte zu errechnen und die entstandene neue Kurve zu klassifizieren.
     Somit wird vom neuronalen Netz der Verlauf der Kurve berücksichtigt um Geräte zu erkennen und nicht die reinen Rohwerte, welche je nach Netzwerk aktueller Aktivität stark abweichen kann.
@@ -225,8 +225,16 @@
     % verschiedene neuronale Netze vergleichen CNN, RNN, CNN + RNN
     % vllt. verschiedene Aktivierungsfunktionnen Sigmoid / Cross-Entropie / Binary Cross-Entropie
 
-
-    \begin{algorithm}
+    Nach der Klassifikation der Batches mit einem der neuronalen Netze sind für diese klassifizierten Batches mit n Datenpunkten für jeden Punkt n Klassifizerungen vorhandenen sind(vgl. Algorithmus \ref{alg:BatchGenerierung}).
+    Somit muss diese Klassifikation ausgewertet werden um genau sagen zu können, zu welchen Datenpunkten(Zeitpunkten) Geräte aktiv waren und welches Gerät am wahrscheinlichsten aktiv war.
+    Hierzu wird der Algorithmus in \ref{alg:Ergbnisauswertung} verwendet, welcher die Treffer sowie die genaue Wahrscheinlichkeit pro Klasse zu einem bestimmten Zeitpunkt berücksichtigt. 
+    Dieser Algorithmus bestimmt die Anzahl der Gewinnerklassen(Klasse mit der höchsten Wahrscheinlichkeit) aller Batches in denen der bestimmte Datenpunkt vorhanden ist, und bestimmt nun aus dieser Anzahl wiederum die Gewinnerklasse(Klasse mit den meisten Treffern).
+    Außerdem wird die Wahrscheinlichkeit aller Klassen in allen Batches des Datenpunktes summiert und wiederum die Gewinnerklasse bestimmt.
+    Somit erhält man zwei verschiedene Gewinnerklassen, welche wiederum miteinander verglichen werden um die entgültige Gewinnerklasse zu bestimmen.
+    \newline
+    \noindent
+    Der Vorteil dieses Verfahrens ist die Berücksichtung aller Klassifikationen sowie deren einzel Wahrscheinlichkeit, sodass sich eine genauere Klassifizierung ergibt.
+    \begin{algorithm}\label{alg:Ergbnisauswertung}
         \caption{Ergbnisauswertung}
         \begin{algorithmic}[1]
         \Function{EvaluatePrediction}{$P,b$}
