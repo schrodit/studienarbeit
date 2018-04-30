@@ -4,6 +4,7 @@
 \usepackage{cite}
 
 \usepackage[english, german]{babel}
+\usepackage[babel,german=quotes]{csquotes}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{listings}
@@ -40,8 +41,6 @@
 %Path in Windows format:
 \graphicspath{ {img/} }
 
-\bibliographystyle{plain}
-
 \begin{document}
 
 \title{Klassifikation und Analyse aus Stromdaten im Haushalt mit neuronalen
@@ -64,6 +63,6 @@ Netzen}
 
 \listoffigures
 \listofalgorithms
-%include bib file
-\bibliography{bib/mybib}
+\bibliographystyle{plain} 
+\bibliography{bib/myBib.bib}
 \end{document}
