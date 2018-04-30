@@ -37,9 +37,10 @@
 }
 
 
-
 %Path in Windows format:
 \graphicspath{ {img/} }
+
+\bibliographystyle{plain}
 
 \begin{document}
 
@@ -52,6 +53,7 @@ Netzen}
 \tableofcontents
 
 \include{content/abstract}
+\include{content/Acronyms}
 \include{content/Einleitung}
 \include{content/Grundlagen}
 \include{content/Ausfuerung}
@@ -60,10 +62,8 @@ Netzen}
 \include{content/Wirtschaftlichkeit}
 \include{content/Ausblick}
 
-\include{content/Acronyms}
-
 \listoffigures
 \listofalgorithms
-\bibliography{bib/mybib}{}
-\bibliographystyle{plain}
+%include bib file
+\bibliography{bib/mybib}
 \end{document}

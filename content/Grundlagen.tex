@@ -31,15 +31,21 @@
     oder kein bekanntes Modell zur Problemlösung bekannt ist.
     Durch Maschinelles Lernen können Zusammenhänge erkannt werden, die durch andere statistische oder algorithmische Verfahren nicht erkannt oder abgebildet werden können.
 
-    \subsection{Lernprozess}
+    \subsection{Lernprozess} \label{Lernprozess}
     Grundlegend besteht Maschinelles Lernen aus einer Trainigsphase und einer Test- beziehungsweise Validierungsphase.
-    In der Trainigsphase wird auf Basis von Daten, wie bisherige Emails eines Benutzers, ein Modell erstellt, welches dann in der Validierungsphase auf seine Genauigkeit überprüft wird.
-    Aus dem Ergebnis der Validierungsphase sowie der sonstigen Wissensbasis kann nun eine neue Trainsphase durchgeführt werden(vgl. \ref{fig:MLTrainigsprozess}).
+    Hierzu werden zunächst alle vorhandenen Daten in Trainings- sowie Testdaten meist im Verhältnis 80:20 eingeteilt.
+    In der Trainigsphase wird auf Basis der Tringsdatendaten, wie zum Beispiel bisherige Emails eines Benutzers, ein Modell erstellt, welches dann in der Validierungsphase auf seine Genauigkeit und Validierungsgenauigkeit überprüft wird.
+    Genauigkeit bedeutet, dass in der Validierungsphase alle Daten, welche auch im Traingsprozess verwendet wurden, von dem neuen Modell klassifiziert werden.\\
+    Dieses Ergebnis wird dann mit der bekannten Klassifierung der Daten abgeglichen und eine Übereinstimmungswahrscheinichkeit errechnet, welche dann als Genauigkeit des Modells gilt.
+    Um die Validierungsgenauigkeit zu berechnen wird derselbe Prozess auch mit den Testdaten durchgeführt.
+    Die Validierungsgenauigkeit ist wichtig um herauszufinden ob das entstandene Netz die Trainingsdaten nur auswendig gelernt hat oder wirklich neues Wissen generiert hat.
+    Dies ist der Fall, sobald während des Trainings die Validierungsgenauigkeit immer weiter sinkt, dann spricht man von Overfitting des Netzes.
     \newline
 
     \noindent
+    Aus dem Ergebnis der Validierungsphase sowie der sonstigen Wissensbasis kann nun eine neue Trainsphase durchgeführt werden(vgl. \ref{fig:MLTrainigsprozess}).
     Dieser Prozess wird Epoche genannt und kann nun beliebig oft wiederholt werden und das Modell weiter verbessert werden.
-    Das entstandene Modell ist das neu generierte Wissen.
+    Das entstandene Modell stellt das neu generierte Wissen dar.
 
     % Schaubild zu testphasen hinzufügen
     \begin{figure}[H]
@@ -131,7 +137,7 @@
     \noindent
     Beim \textbf{Batch Lernen} wird anders als beim Backpropagation Lernen nciht nach jeden Durchlauf des Netztes die Gewichte angepasst sondern erst nachdem das Trainingsset komplett durchlaufen wurde.
     Dies führt zu weniger Genauigkeit das nicht auf spezielle Eigenschaften einzelener Einträge eingengangen.
-    Jedoch Ist dieses Verfahren sehr viel weniger Rechenaufwand und es können mehr Traningsdaten in gleicher Zeit einbezogen werden.
+    Jedoch Ist dieses Verfahren sehr viel weniger Rechenaufwand und es können mehr Trainingsdaten in gleicher Zeit einbezogen werden.
     
     \subsubsection{Perzeptron}
     Ein sehr einfaches neuronales Netz ist das Perzeptron, welches 1958 von Frank Rosenblatt entwickelt wurde.
