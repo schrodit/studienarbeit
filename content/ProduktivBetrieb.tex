@@ -1,7 +1,18 @@
 \chapter{ProduktivBetrieb}
     Das in Kapitel \ref{Ergebnis} resultierende neuronale Netz sowie die Auswertung dessen Ergebnis kann bisher nur begrenzt genutzt werden.
     Um diese Funktionen produktiv einsetzten zu können wird eine Schnittstelle zur einfachen Verwendung benötigt.
-    
+    An diese Schnittstelle werden folgende weitere Vorraussetzungen gestellt.
+    \begin{description}
+        \item[Echzeitanalyse] Es soll möglich sein Daten beziehungsweise Batches in Echzeit zu analysieren.
+        \item[Periodenanalyse] Es soll möglich sein für beliebige historische Zeiträume Geräte zu klassifizieren.
+        \item[Performance] Es sollte möglich sein lange Zeitreihen mit sehr vielen Daten auch noch in annehmbarer Zeit auszuwerten. Zudem sollte es möglich sein Zeitreihen in Echtzeit zu analysieren.
+        \item[Tests] Um Fehler zu verhindern und ein stabile und sicheres Programm zu entwickeln sollen wichtige fehleranfällige Funktionalitäten getestet werden.
+    \end{description}
+
+
+    Als Schnittstelle wird eine Socket.IO-API anstatt einer gebräuchlicheren REST-API aufgrund von besserer Performance und Einheitlichkeit mit der Daten-API gewählt.
+    Die Spezifikation dieser Schnittstelle wird wie in Abschnitt \ref{API-Spezifikation} beschrieben, festgelegt. 
+    Somit ist die Echzeitanalyse sowie die Periodenanalyse mit möglichst wenig Mehraufwand abgebildet.
 
     \subsection{API-Spezifikation}
         \subsubsection{Single Batch}
@@ -22,7 +33,7 @@ Topic: "single-batch"
             "h13": 230,
             "h15": 230,
         },
-        .. 20x
+        .. x Batchsize
     ]
 }
             \end{lstlisting}
