@@ -1,1 +1,64 @@
 \chapter{ProduktivBetrieb}
+    Das in Kapitel \ref{Ergebnis} resultierende neuronale Netz sowie die Auswertung dessen Ergebnis kann bisher nur begrenzt genutzt werden.
+    Um diese Funktionen produktiv einsetzten zu können wird eine Schnittstelle zur einfachen Verwendung benötigt.
+    
+
+    \subsection{API-Spezifikation}
+        \subsubsection{Single Batch}
+        \paragraph{Input:}
+
+            \begin{lstlisting}[language=json,firstnumber=1]
+Topic: "single-batch"
+{
+    "data": [
+        {
+            "u": 230,
+            "f": 230,
+            "h3": 230,
+            "h5": 230,
+            "h7": 230,
+            "h9": 230,
+            "h11": 230,
+            "h13": 230,
+            "h15": 230,
+        },
+        .. 20x
+    ]
+}
+            \end{lstlisting}
+        
+            \paragraph{Output:}
+        
+            \begin{lstlisting}[language=json,firstnumber=1]
+Topic: 'single-prediction'
+{
+    "data": float //- Prediction of Senseo
+}
+            \end{lstlisting}
+    
+        \subsubsection{Period}
+            \paragraph{Input:}
+    
+                \begin{lstlisting}[language=json,firstnumber=1]
+Topic: "period"
+{
+    "data": {
+        "start": "DateTime2",
+        "end": "DateTime2"
+    }
+}
+                \end{lstlisting}
+            
+                \paragraph{Output:}
+            
+                \begin{lstlisting}[language=json,firstnumber=1]
+Topic: 'period-prediction'
+* Series of Predictions where 0: Senseo, 1: Microwave, 2: Bosch, 3: Undefined, for every second
+{
+    "data": [
+        Int,
+        ... end - start
+        Int
+    ]
+}
+                \end{lstlisting}

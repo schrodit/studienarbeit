@@ -1,17 +1,34 @@
-\chapter{Ergebnis}
+\chapter{Ergebnis}\label{Ergebnis}
 
-    Wie die nachfolgendenen Ergebnisse des Traingsprozesses zeigen, unterscheiden sich die Ergebnisse der verschiedenen Netze stark.
-    Auch zeigen die Ergebnisse, dass sich einige Parameter positiv auf die Genauigkeit des Netzes auswirken andere jedoch auch negativ.
+    Wie die nachfolgendenen Ergebnisse des Trainingsprozesses zeigen, unterscheiden sich die Ergebnisse der verschiedenen Netze stark.
+
+    Generell zeigen die Ergebnisse, dass ein \ac{CNN} bessere beziehungsweise genauere Ergebnisse ohne Overfitting erzielt als ein \ac{RNN} bei gleichen Parametern.
+    Dies führt auch dazu, dass das "`Mixed-Modell"' Ergebnisse zwischen den beiden reinen Modellen liefert.
+    Auch sieht man sehr gut, dass ein Model mit einem \ac{RNN} schneller trainiert, jedoch auch sehr früh Overfittet (vgl. Tabelle \ref{tabl:ErgebnisEpoch} ).
+    
+    \paragraph{Batch} 
+    Bei der Wahl der Batchgröße müssen zwei Faktoren für die Bewertung beachtet werden. 
+    Wie bei den anderen Parametern sind die Genauigkeiten ein wichtiger Faktor. 
+    Hierbei ist zu sehen, dass mit steigender Batchgröße die Genauigkeit prinzipiell steigt, jedoch ein Overfitting bei zu großen Werten eintritt.
+    Dies ist auf die Laufzeit der einzelnen Geräte zurückzuführen.
+    Der zweite Bewertungsfaktor der Batchgröße ist die Laufzeit(Runtime) der zu klassifizierenden Geräte. 
+    Die Batchgröße darf nicht größer sein als die kürzeste Laufzeit eines zu klassifizierenden Gerätes, da sonst zu der Ungenauigkeit des neuronalen Netzes die Ungenauigkeit der Batchgröße hinzukommt. %$$ f = \frac{Batchgröße}{Laufzeit} $$
+    Somit sollte trotz besserer Ergebnisse mit großen Batches eine eher kleine Batchgröße gewählt werden.
+
+    \paragraph{Epoche} 
+    Mit höherer Epochenanzahl, also mehreren Trainingsdurchläufen mit allen Trainingsdaten sowie Backpropagation lernen, werden alle Modelle besser trainiert und erzielen bessere Ergebnisse.
+    Jedoch tritt bei Modellen mit einem \ac{RNN} bei zu großen Trainingsdurchläufen, wie oben beschreiben, Overfitting auf.
+    Dies bedeutet, dass bei \ac{RNN}-Modellen weniger Epochen durchlaufen werden sollten als bei \ac{CNN}-Modellen.
+
+    \paragraph{Lernrate}
+    Die Lernrate hat bei 20 Epochen nur wenig Einfluss auf das Ergebnis der neuronalen Netze.
+    Jedoch besteht bei hoher Lernrate die Gefahr, das Overfitting schneller auftritt oder bestimmte Features durch Zufall zu stark in das Ergebnis einfließen.
+    Hier sollte eine kleine Lernrate mit höherer Epochenzahl für besserer Ergebnisse gewählt werden.
     \newline
 
     \noindent
-    Im Allgemeinen zeigen die Ergebnisse, dass ein \ac{CNN} bessere beziehungsweise genauere Ergebnisse ohne Overfitting erziehlt als ein \ac{RNN} bei gleichen Parametern.
-    Dies führt auch dazu, dass das "`Mixed-Modell"' Ergenisse zwischen den beiden reinen Modellen liefert.
-    Auch sieht man sehr gut, dass ein Model mit einem \ac{RNN} schneller trainiert, jedoch auch sehr früh Overfittet(vgl. Tabelle \ref{tabl:ErgebnisEpoch} ).
-    \newline
-
-    \noindent
-    Zusammenfassend kann somit festgestellt werden, dass die besten Ergebnisse erziehlt werden können, wenn die Lernrate niedrig ist, viele Epochen trainiert wird und eine mittlere Batchgröße gewählt wird.
+    Zusammenfassend kann somit festgestellt werden, dass die besten Ergebnisse erzielt werden können, wenn die Lernrate niedrig ist, viele Epochen trainiert wird und eine kleinere Batchgröße gewählt wird.
+    Zur Erkennung von Mustern innerhalb einer Zeitserie mit mehreren Features eignet sich im Fall dieser Arbeit ein \ac{CNN} am besten.
 
     \subsubsection{Batchgröße}
 
@@ -20,8 +37,6 @@
         Datentypen = ['u', 'h3', 'h5', 'h7', 'h9', 'h11', 'h13', 'h15']\\
         \noindent
         Epochen = 30\\
-        \noindent
-        Ableitung = True\\
 
         \begin{table}[H]
             \centering
@@ -75,8 +90,6 @@
         Datentypen = ['u', 'h3', 'h5', 'h7', 'h9', 'h11', 'h13', 'h15']\\
         \noindent
         Batchgröße = 20\\
-        \noindent
-        Ableitung = True\\
 
         \begin{table}[H]
             \centering
@@ -166,8 +179,6 @@
         Batchgröße = 20\\
         \noindent
         Epochen = 30\\
-        \noindent
-        Ableitung = True\\
 
         \begin{table}[H]
             \centering
@@ -210,9 +221,31 @@
 
     \subsection{Auswertung der Ergebnisse}
 
-        Nach Anwendung des in \ref{Auswertungsalgorithmus} beschriebenen Algorithmus ergeben sich die nachfolgenden Schaubilder der verschiedenene neuronalen Netze.
-        Die Schaubilder zeigen die jeweiligen klassifizierten Geräte jeden Zeitpunktes von Schaubild \ref{fig:ResultClassificationPeriod}.
-        Hierbei zeigt die x-Achse den Zeitpunkt und die y-Achse das Gerät, wobei y = 0 \( \Rightarrow \)  "`Senseo Kaffemaschine"' und y = 3 \( \Rightarrow \) "`Kein aktives bekanntes Gerät"'.
+        Nach Anwendung des in \ref{Auswertungsalgorithmus} beschriebenen Algorithmus ergeben sich die nachfolgenden Abbildungen der verschiedenen neuronalen Netze.
+        Die Abbildungen zeigen die jeweiligen klassifizierten Geräte jeden Zeitpunktes von Abbildung \ref{fig:ResultClassificationPeriod}.
+        Hierbei zeigt die x-Achse den Zeitpunkt und die y-Achse das Gerät, wobei 
+        y: 0 \( \Rightarrow \)  "`Senseo Kaffeemaschine"',\\
+        \noindent
+        y: 1 \( \Rightarrow \)  "`Mikrowelle"',\\
+        \noindent
+        y: 2 \( \Rightarrow \)  "`Bosch Vollautomat"',\\
+        \noindent
+        und y: 3 \( \Rightarrow \) "`Kein aktives bekanntes Gerät"'.
+        \\
+        
+        \noindent
+        Die Abbildungen zeigen unterschiedliche Bewertungen beziehungsweise Klassifizierungen der Zeitpunkte.
+        Gut können die Gemeinsamkeiten aller drei Klassifizierungen erkannt werden.
+        Trotz der Einbeziehung vieler verschiedener Ergebnisse (vgl Algorithmus \ref{Auswertungsalgorithmus}), gibt es noch viele kleine Ausreißer.
+        Diese Aureßer sind bei allen Modellen unterschiedlich verteilt und auch mit unterschiedlicher Länge.
+        Jedoch kann man sehr gut sehen, dass alle drei einen großen gemeinsamen Abschnitt haben (ca. y = [30, 190]), wo die "`Senseo Kaffeemaschine"' erkannt wurde.
+        Somit kann mit hoher Wahrscheinlich davon ausgegangen werden, dass zu diesem Zeitpunkt dieses Gerät aktiv war.
+        \newline
+
+        \noindent
+        Die anderen Geräte wurden jedoch nie erkannt, was darauf zurückzuführen ist, dass für die anderen Geräte sehr wenige Daten vorhanden sind.
+        Wie die Klassifikation der "`Senseo Kaffeemaschine"' zeigt, können mit genügend Daten von Geräten, diese auch klassifiziert werden.
+        Auch können durch mehr Daten die Ausreißer, welche in allen Abbildungen zu sehen sind, vermindert werden und die Bestimmung von aktiven Geräten noch präziser durchgeführt werden.      
         
         \begin{figure}[H]
             \centering
@@ -243,6 +276,14 @@
         \end{figure}
 
     \subsection{Ergebnisglättung}
+        Eine Möglichkeit die Ungenauigkeit des neuronalen Netzes zu verbessern ist die Auswertung der Ausreißer.
+        Durch die Einbeziehung einer weiteren Eigenschaft der Geräte können einige Ausreißer erkannt und beseitigt werden.
+        Wie bereits im Abschnitt \ref{Ergebnis} in Paragraph "`Batch"' erwähnt wurde, wird die Größe der Batches klein gehalten damit Geräte mit kleineren Laufzeiten erkannt werden können.
+        Diese Laufzeiten können auch für eine weitere Verbesserung verwendet werden.
+        Durch die Datenbank(vgl. Kapitel \ref{Messdaten}), welche die manuell klassifizierten Geräte beinhaltet, wird die kürzeste Laufzeit jedes Gerätes ermittelt.
+        Diese Laufzeit gibt an wie lange ein Gerät mindestens aktiv war.
+        Somit wird diese Eigenschaft eingesetzt um Ausreißer, welche kürzer dauern als die kürzeste Laufzeit, zu beseitigen.
+        Daraus ergibt sich für die Abbildung \ref{fig:CNN_RawClassification} eine geglättete Klassifikation, siehe Abbildung \ref{fig:CNN_SmoothClassification}.
 
         \begin{figure}[H]
             \centering
@@ -250,3 +291,9 @@
             \caption{Geglättetes Ergebnis des CNN}
             \label{fig:CNN_SmoothClassification}
         \end{figure}
+    
+    \subsection{Zusammenfassung}
+        Das Ergebnis ist ein neuronales Netz welches mithilfe verschiedener Algorithmen die aktive Laufzeit verschiedener Geräte bestimmen kann.
+        Dies bedeutet, dass bestimmt werden kann zu welchen Zeiten welche Geräte aktiv waren und benutzt wurden.
+        
+        Um weitere Geräte klassifizieren zu können oder die Genauigkeit der bisherigen Geräte zu verbessern, ist es notwendig viel mehr klassifizierte Daten zu erheben.
