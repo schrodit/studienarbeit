@@ -55,7 +55,7 @@
 \section{Vorbereiten der Daten}\label{VorbereitenDerDaten}
     Um die Klassifizierung der Geräte auf neuronalen Netzen abzubilden müssen die vorhandenen Daten in ein geeignetes Format transformiert werden.
     Dabei gibt es verschiedene Vorraussetzungen zu beachten, sowie verschiedene Möglichkeiten die Daten zu transformieren.
-    Die Implementierung zu diesen Kapitel lässt sich in \url{https://github.com/schrodit/wesense-ml/blob/master/data/data_manager.py} finden.\\
+    Die Implementierung zu diesen Kapitel lässt sich in \footnote{\url{https://github.com/schrodit/wesense-ml/blob/master/data/data_manager.py}} finden.\\
     
     \noindent
     Bei konventionellen neuronalen Netzen werden Eigenschaften Objekten zugewiesen, wobei alle Objekte mit denselben Eigenschaften betitelt werden.
@@ -128,7 +128,7 @@
     Bei allen Modellen wurde als Gradientenverfahren die Adam-Optimierung gewählt, da diese bei mehr Rechenaufwand bessere Ergebnisse erzielt.    
 
     \subsubsection{CNN}
-    Grundlegend besteht das \ac{CNN} aus einem "`Input Layer"', drei "`Convolutional Layers"', einem "`Dropout Layer"' sowie einem "`Output Layer"'(vgl. \url{https://github.com/schrodit/wesense-ml/blob/master/classification/cnn_classification.py}).
+    Grundlegend besteht das \ac{CNN} aus einem "`Input Layer"', drei "`Convolutional Layers"', einem "`Dropout Layer"' sowie einem "`Output Layer"'(vgl. \footnote{\url{https://github.com/schrodit/wesense-ml/blob/master/classification/cnn_classification.py}}).
     \newline
 
     \noindent
@@ -154,12 +154,12 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=\textwidth]{CNN_Model}
-        \caption{Convolutional Neural Network}
+        \caption{Convolutional Neural Network \protect\cite{Tensorboard}}
         \label{fig:CNN_MODEL}
     \end{figure}
 
     \subsubsection{RNN}
-    Das "`Recurrent Neural Network(RNN) "'- Model besteht aus einem "`Input Layer"', zwei darauffolgende "`LSTM(Long short-term memory) Layer"' und einem "`Ouput Layer"' (vgl. \url{https://github.com/schrodit/wesense-ml/blob/master/classification/rnn_classification_keras.py}).\\
+    Das "`Recurrent Neural Network(RNN) "'- Model besteht aus einem "`Input Layer"', zwei darauffolgende "`LSTM(Long short-term memory) Layer"' und einem "`Ouput Layer"' (vgl. \footnote{\url{https://github.com/schrodit/wesense-ml/blob/master/classification/rnn_classification_keras.py}}).\\
     \noindent
     Das "`Input Layer"' ist ein weiteres "`LSTM Layer"' welche denselben Eingabetensor annimmt, wie das CNN-Model.\\
     \noindent
@@ -173,7 +173,7 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=\textwidth]{RNN_Model}
-        \caption{Recurrent Neural Network}
+        \caption{Recurrent Neural Network \protect\cite{Tensorboard}}
         \label{fig:RNN_MODEL}
     \end{figure}
 
@@ -183,14 +183,14 @@
     \newline
 
     \noindent
-    Da dieses Model eine Mischform aus \ac{CNN} und \ac{RNN} ist, besteht diese Model aus zwei "`Convolutional Layers"', welche die Eingabe und eine Vorprozessierung zum Generalisieren der Eingabe darstellt (vgl. \url{https://github.com/schrodit/wesense-ml/blob/master/classification/mix_classification.py}).
+    Da dieses Model eine Mischform aus \ac{CNN} und \ac{RNN} ist, besteht diese Model aus zwei "`Convolutional Layers"', welche die Eingabe und eine Vorprozessierung zum Generalisieren der Eingabe darstellt (vgl. \footnote{\url{https://github.com/schrodit/wesense-ml/blob/master/classification/mix_classification.py}}).
     Auf diese beiden Schichten folgen nun zwei rekurrente "`LSTM Layer"' und dasselbe "`Output Layer"' wie bei beiden anderen Modellen.
     Die \ac{RNN}-Schichten sollen nun das Vorprozessierte verarbeiten und mögliche Muster in der Zeitserie erkennen.     
 
     \begin{figure}[H]
         \centering
         \includegraphics[width=\textwidth]{MIX_Model}
-        \caption{\ac{CNN} mit \ac{RNN}}
+        \caption{\ac{CNN} mit \ac{RNN} \protect\cite{Tensorboard}}
         \label{fig:MIX_MODEL}
     \end{figure}
 
