@@ -4,10 +4,13 @@
 \usepackage{cite}
 
 \usepackage[english, german]{babel}
+\usepackage[babel,german=quotes]{csquotes}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{float}
+\usepackage{xcolor}
+\include{listing/json}
 
 %page header
 \usepackage{fancyhdr}
@@ -17,6 +20,13 @@
 
 %acronyms
 \usepackage[dua]{acronym}
+
+%pseudocode
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+%no indent
+\setlength\parindent{0pt}
 
 
 %signature field
@@ -33,21 +43,21 @@
 }
 
 
-
 %Path in Windows format:
 \graphicspath{ {img/} }
 
 \begin{document}
 
-\title{Klassifikation und Analyse aus Stromdaten im Haushalt mit neuronalem
-Netzwerk}
+\title{Klassifikation und Analyse aus Stromdaten im Haushalt mit neuronalen
+Netzen}
 \author{Tim Schrodi}
-\date{01.01.2018}
+\date{\today}
 \maketitle
 
 \tableofcontents
 
 \include{content/abstract}
+\include{content/Acronyms}
 \include{content/Einleitung}
 \include{content/Grundlagen}
 \include{content/Ausfuerung}
@@ -56,8 +66,8 @@ Netzwerk}
 \include{content/Wirtschaftlichkeit}
 \include{content/Ausblick}
 
-\include{content/Acronyms}
-
-\bibliography{bib/mybib}{}
-\bibliographystyle{plain}
+\listoffigures
+\listofalgorithms
+\bibliographystyle{plain} 
+\bibliography{bib/myBib.bib}
 \end{document}

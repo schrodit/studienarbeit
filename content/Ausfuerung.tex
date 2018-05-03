@@ -1,16 +1,17 @@
 \chapter{Ausführung}
 
-    Dieses Kapitel beschreibt die Vorgehensweise von der ersten manuellen Analyse der Daten bis zum fertigen Produkt.
+    Dieses Kapitel beschreibt die Vorgehensweise von der ersten manuellen Analyse der Daten bis zu einem funktionierenden neuronalen Netz.
+    Außerdem werden verschiedene neuronale Netze miteinander verglichen um die beste Vorgehensweise zur Klassifikation von Geräten zu finden.
     Als Beispielprodukt für die Klassifizierung wurde eine Senseo Kaffeemaschine gewählt, da durch häufige Benutzung viele Daten erhoben werden können. 
     Außerdem wurde eine Mikrowelle als zweite Gerät mit wenigen Daten gewählt um verschiedene Parameter und Kennzahlen zu vergleichen.
     Hierbei soll die Anzahl der Daten sowie die Klassifikation von mehreren Geräten innerhalb eines Neuronalen Netzes untersucht werden.
 
-\section{Manuelle Analyse}
+\section{Manuelle Analyse} \label{ManuelleAnalyse}
 
     Zur manuellen Analyse der Daten wird das in \ref{VisualisierungWebApp} beschriebene Tool verwendet.
     Zunächst werden sehr aussagenkräftige Größen wie die Spannung oder die Frequenz der Kaffeemaschine verwendet und mit anderen aktiven Zeiträumen der Kaffeemaschine verglichen.
     Hierbei kann ein sehr spezifischer Verlauf der Spannung erkannt werden.\\ 
-    Wie in Schaubild ref{fig:Spannungsverlauf} zu sehen ist, ist die Kurve zu Beginn start fallend und verbleibt dann eine gewissen Zeit auf diesem Tief. 
+    Wie in Abbildung ref{fig:Spannungsverlauf} zu sehen ist, ist die Kurve zu Beginn start fallend und verbleibt dann eine gewissen Zeit auf diesem Tief. 
     nach einem längeren steigenden Abschnitt fällt die Kurve wieder bis der Zubereitungsvorgang beendet wurde und wieder steigt.\\
     \newline
     Diesem Verlauf können nach mehreren Beobachtungen bestimmte Vorgänge einer Kaffeezubereitung zugeordnet werden.
@@ -35,7 +36,7 @@
     \noindent
     Bei der manuellen Analyse der Mikrowelle können bei Analyse des Spannungs- oder Frequenzverlaufs leider keine hervorstechenden Merkmale oder Gemeinsamkeiten erkannt werden.
     Somit wird die Mikrowelle demnach einen anderen Einfluss auf doe Netzaktivität ausüben.
-    Wie bei dem Vergleich der verschiedenen harmonischen Oberwellen zu sehen ist (siehe Schaubild \ref{fig:3OberwelleMikrowelle}), besteht eine große Ähnlichkeit der Kurven der dritten harmonischen Welle.\\
+    Wie bei dem Vergleich der verschiedenen harmonischen Oberwellen zu sehen ist (siehe Abbildung \ref{fig:3OberwelleMikrowelle}), besteht eine große Ähnlichkeit der Kurven der dritten harmonischen Welle.\\
     \newline
 
     \begin{figure}[H]
@@ -48,27 +49,33 @@
 
     \noindent
     Wie dieser Abschnitt zeigt können schon mit bloßen Auge bestimmte Auswirkungen der verschiedenen Geräte erkannt werden.
-    Auch wenn einige Störungen auftreten und den Verlauf verfälschen sollte es dennoch möglich sein diese Geräte herauszufiltern.
-    Weiterführend wird dieser Prozess automatisiert und zu verbessert um auch trotz großer Störungen, Geräte präzise Klassifizieren zu können. 
+    Auch wenn einige Störungen auftreten und den Verlauf verfälschen, sollte es dennoch möglich sein diese Geräte herauszufiltern.
+    Weiterführend wird dieser Prozess automatisiert und verbessert um auch trotz großer Störungen, Geräte präzise klassifizieren zu können. 
 
-\section{Neuronales Netz}
-
-
-\section{Vorbereiten der Daten}
-    Um Klassifizierung der Geräte auf neuronalen Netzen abzubilden müssen die vorhandenen Daten in ein geeignetes Format transformiert werden.
+\section{Vorbereiten der Daten}\label{VorbereitenDerDaten}
+    Um die Klassifizierung der Geräte auf neuronalen Netzen abzubilden müssen die vorhandenen Daten in ein geeignetes Format transformiert werden.
     Dabei gibt es verschiedene Vorraussetzungen zu beachten, sowie verschiedene Möglichkeiten die Daten zu transformieren.\\
     
     \noindent
     Bei konventionellen Neuronalen Netzen werden Eigenschaften Objekten zugewiesen, wobei alle Objekte mit denselben Eigenschaften betitelt werden.
     Ein Beispiel dafür sind Tiere, bei denen anhand von Reproduktion oder Atmung in Säugetiere, Vögel, Reptilien, etc. eingeteilt wird. 
-    So können spezielle Tiere wie ein Hund in eine dieser Klassen zugewiesen werden.
+    So können spezielle Tiere wie ein Hund eine dieser Klassen zugewiesen werden.
     Alle klassifizierten Tiere werden hierbei dieselben Eigenschaftsklassen mit unterschiedlichen Werten zugewiesen.
-    Das heißt, dass einem Hund oder einer Taube die Anzahl der Beine und die Reproduktion zugewiesen werden jedoch mit jeweils unterschiedlichen Werten.\\
+    Das heißt, dass einem Hund oder einer Taube die Anzahl der Beine und die Reproduktion zugewiesen werden, jedoch mit jeweils unterschiedlichen Werten.\\
     
     Durch die in Kapitel \ref{Messdaten} beschriebene Erhebung der Daten, werden die Stromdaten in einem bestimmten Format von der API bereitgestellt.
     Es werden 2 verschiedene Listen zurückgegeben wobei eine die reinen Messdaten enthält und die andere die Labels für diese Daten.\\
     Die reinen Messdaten werden zusammengetragen, indem zu den gelabelten Zeiträumen jeweils alle sekündlich gemessenen Werte des Stromnetzes als eine Matrix eingefügt werden.
-    Somit ergibt sich eine drei dimensionale Matrix welche inder ersten Dimension die Zeiträume abbildet, in der zweiten Dimension die sekündliche Zeitreihe und die dritte die vorhandenen physikalischen Größen.
+    \newline
+
+    \noindent
+    Zusätzlich zu den manuell klassifizierten Daten werden noch zufällig ausgewählte Zeitabschnitte hinzugefügt um die Möglichkeit "`kein Gerät war aktiv"' abzubilden.
+    Diese Abschnitte werden gewählt, indem zufällig Daten aus der Datenbank gewählt werden bei denen mit großer Wahrscheinlich kein zu klassifizierendes Gerät aktiv war.
+    Eine dieser Zeiträume könnte zum Beispiel von 00:00 bis 5:00 Uhr, da zu dieser mit hoher Wahrscheinlichkeit kein Gerät aktiv war.
+    \newline
+
+    \noindent
+    Somit ergibt sich eine drei dimensionale Matrix welche in der ersten Dimension die Zeiträume abbildet, in der zweiten Dimension die sekündliche Zeitreihe und die dritte die vorhandenen physikalischen Größen.
 
     \begin{lstlisting}[language=Python, caption={Datenstruktur der gelabelten Messdaten, die von der API bereit gestellt wird},label=lst:DatenstrukturGelabelteMessdaten]
 
@@ -82,8 +89,112 @@
 ]
     \end{lstlisting}
 
+    Da Neuronale Netze feste Eingabegrößen benötigen, werden die Daten in Batches aufgeteilt.
+    Batches bedeutet, dass die Zeitreihe in gleich große Abschnitte aufgeteilt wird.
+    Dementsprechend wird die Matrix \( A[m, n, 9] \), zu einer Matrix mit einheitlicher Größe transformiert, sodass die entstehende Matrix zum Beispiel die Form \( B[m, 20, 9] \) annimmt.
+    \newline
 
+    \noindent
+    Um diese neue Matrix zu erhalten wird folgender Algorithmus auf die alte Matrix angewandt:
+
+    \begin{algorithm}\label{alg:BatchGenerierung}
+        \caption{Batch Generierung}
+        \begin{algorithmic}[1]
+        \Function{GeneriereBatches}{$A,b$}
+        \State\Comment{A - float[][][], b - int (Batchgröße)}
+            \State ${B} = Array[][][]$
+            \For{$i = 0$ to $length(A)$}
+                \For{$j = 0$ to $length(A[i]) - b$}
+                    \State $start = j$
+                    \State $end = j + b$ 
+                    \State $I_b = length(B) + 1$
+                    \State $B[I_b] = A[i][start : end]$
+                \EndFor
+            \EndFor
+            \State return $B$
+        \EndFunction
+        \end{algorithmic}
+    \end{algorithm}
+
+\section{Neuronales Netz}
+    Wie Abschnitt \ref{ManuelleAnalyse} zeigt ist es möglich mit herkömmlichen manuellen Methoden verschiedene Geräte innerhalb eines Verlaufs zu klassifizieren.
+    Somit sollte dies auch mit maschinellem Lernen möglich sein.
+    \newline
+
+    \noindent
+    Um nun die Geräte maschinell zu klassifizieren, werden drei verschiedene "`neuronale Netz"' Modelle erstellt und miteinander verglichen.
+    Die drei Modelle beinhalten ein "`Recurrent Neural Network(RNN) "', ein "`Convolutional Neural Network(CNN)"' sowie eine Mischung aus diesen Ansätzen. 
+    Bei allen Modellen wurde als Gradientenverfahren die Adam-Optimierung gewählt, da diese bei mehr Rechenaufwand bessere Ergebnisse erzielt.    
+
+    \subsubsection{CNN}
+    Grundlegend besteht das \ac{CNN} aus einem "`Input Layer"', drei "`Convolutional Layers"', einem "`Dropout Layer"' sowie einem "`Output Layer"'.
+    \newline
+
+    \noindent
+    Das "`Input Layer"' ist der Eingang zum neuronalen Netz, welcher die Rohdaten annimmt und an das eigentliche Netz weiterleitet. 
+    Es ist ein weiteres "`Convolutional Layer"' und nimmt einen Eingabe-Tensor (Matrix innerhalb eines neuronalen Netzes), welcher an die Batchgröße angepasst ist.
+    Dementsprechend hat der Eingabetensor die Form \( A[m, b, 9] \), mit m: Trainingsdatengröße und b: Batchgröße.
+    \newline
+
+    \noindent
+    Die Eingabe wird dann weitergeleitet an die drei "`Convolutional Layers"', welche mit unterschiedlicher "`Hidden Layer"'-Größe initialisiert werden.
+    Wobei die "`Hidden Layer"' größer werden je näher sie topologisch an dem "`Output Layer"' liegen.
+    \newline
+
+    \noindent
+    Das "`Dropout Layer"' wird eingefügt um die Tensordimension zu verkleinern und somit das Ergebnis zu generalisieren und Overfitting zu vermeiden.
+    \newline
+
+    \noindent
+    Das "`Output Layer"' wandelt nun die Erkenntnisse der vorherigen Schichten in ein lesbares Format um. 
+    Hierzu wird ein "`Dense Layer"' verwendet, welcher ein eindimensionaler Tensor mit einem Feld pro klassifizierbaren Objekt ist und die Softmax-Funktion als Aktivierungsfunktion beinhaltet.
+    Dieser eindimensionale Tensor repräsentiert pro Feld die Ausgabe pro zu klassifizierendem Gerät.     
     
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{CNN_Model}
+        \caption{Convolutional Neural Network}
+        \label{fig:CNN_MODEL}
+    \end{figure}
+
+    \subsubsection{RNN}
+    Das "`Recurrent Neural Network(RNN) "'- Model besteht aus einem "`Input Layer"', zwei darauffolgende "`LSTM(Long short-term memory) Layer"' und einem "`Ouput Layer"'.\\
+    \noindent
+    Das "`Input Layer"' ist ein weiteres "`LSTM Layer"' welche denselben Eingabetensor annimmt, wie das CNN-Model.\\
+    \noindent
+    Es folgen zwei weitere "`LSTM Layer"' einer "`Hidden Layer"'-Größe von 64 pro Schicht.
+    Dieselbe Größe wird auch im Eingabe-"`LSTM Layers"' verwendet.
+    \newline
+
+    \noindent
+    Das "`Output Layer"' ist, wie beim \ac{CNN}-Model, ein "`Dense Layer"', der aus der Berechnung des Netzes eine verwertbare Ausgabe erzeugt.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{RNN_Model}
+        \caption{Recurrent Neural Network}
+        \label{fig:RNN_MODEL}
+    \end{figure}
+
+    \subsubsection{Mixed - CNN und RNN}
+    Das dritte zu testende Model beinhaltet eine Mischung aus den zwei bisherigen Netzen. 
+    Dies soll zeigen, ob verschiedene Eigenschaften von neuronalen Netzen, positive oder negative Auswirkungen auf das Training und die Genauigkeit des Models haben.
+    \newline
+
+    \noindent
+    Da dieses Model eine Mischform aus \ac{CNN} und \ac{RNN} ist, besteht diese Model aus zwei "`Convolutional Layers"', welche die Eingabe und eine Vorprozessierung zum Generalisieren der Eingabe darstellt.
+    Auf diese beiden Schichten folgen nun zwei rekurrente "`LSTM Layer"' und dasselbe "`Output Layer"' wie bei beiden anderen Modellen.
+    Die \ac{RNN}-Schichten sollen nun das Vorprozessierte verarbeiten und mögliche Muster in der Zeitserie erkennen.     
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{MIX_Model}
+        \caption{\ac{CNN} mit \ac{RNN}}
+        \label{fig:MIX_MODEL}
+    \end{figure}
+
+    Die in diesem Abschnitt dargestellten Modelle stellen den Grundlegenden Aufbau der neuronalen Netze dar.
+    Diese beinhalten jedoch keinerlei Wissen und können somit noch nicht zum Klassifizieren verwendet werden.    
     % batches von 20 / 30 / 60
     % überlappende batches
     % 1 batch von 20 Datenpunkten pro sekunde --> mehr daten und höhere genauigkeit beim späteren klassifizieren
@@ -93,8 +204,130 @@
 
 
 \section{Trainingsprozess}
+    Um die drei verschiedene Modelle anwenden zu können, muss diesen Modellen Wissen beigebracht werden.
+    Dies geschieht durch Trainieren dieser Modelle mit den in Abschnitt \ref{VorbereitenDerDaten} vorbereiteten Daten(vgl. Abschnitt \ref{KlassifikationDerMessdaten}).
+    Damit die Modelle bestmögliche Ergebnisse erzielen, wird der Trainingsprozess mit verschiedenen Traningparameter sowie verschiedenen Daten durchlaufen.
+    Die Trainingsparameter beinhalten die Batchgöße, die Lernrate, die Trainingsepochen, die Anzahl der zusätzlich gewählten Zeiträume sowie die genutzten physikalischen Größen.
+    \newline
 
-\section{Auswertung der Ergebnisse}
-    % verschiedene Batch größen vergleichen
-    % verschiedene neuronale Netze vergleichen CNN, RNN, CNN + RNN
-    % vllt. verschiedene Aktivierungsfunktionnen Sigmoid / Cross-Entropie / Binary Cross-Entropie
+    \noindent
+    Die Trainingsparameter aller Netze werden zunächst mit Standardparametern versehen.
+    \newline
+    \noindent
+    Diese Standardparametern werden wie folgt festgelegt:\\
+    \noindent
+    Lernrate = 0.001\\
+    \noindent
+    Datentypen = ['u', 'h3', 'h5', 'h7', 'h9', 'h11', 'h13', 'h15']\\
+    \noindent
+    Batchgröße = 20\\
+    \noindent
+    Epochen = 30\\
+
+    \noindent
+    Um die Auswirkung einzelner Parameter auf das Trainingsergebnis sehen zu können wird jeweils ein Parameter verändert und verschiedene Werte dieses Parameters miteinander verglichen.
+    \newline
+    \noindent
+    Als Maßstab der Beeinflussung eines Parameters auf das Ergebnis eines Models wird die Genauigkeit sowie die Validierungsgenauigkeit in Prozent gewählt.
+    Diese Werte werden nach dem Training eines Models, anhand von Test- bzw. Validierungsdaten errechnet (vgl. Abschnitt \ref{Lernprozess}). 
+    Somit kann mit der Genauigkeit das Erlernen der Trainingsdaten überprüft werden, sowie mit der Validierungsgenauigkeit Over- bzw. Underfitting des Models nachgewiesen werden.
+    \newline
+
+    \noindent
+    Nach einigen Trainingsversuchen (vgl. Tabelle \ref{tabl:ErgebnisAbleitung}) mit den Rohdaten wurde festgestellt, dass mit diesen Daten keine aussagekräftigen Ergebnisse erzielt werden können.
+    Als Lösung dieses Problems, werden nach einigen Versuchen zwei verschiedene Verfahren gewählt mit denen die Rohdaten transformiert werden. \\
+    \noindent
+    Zum einen wird eine Normalisierung der Daten in Werte zwischen 0-1 durchgeführt, sodass größere Werte wie die Spannung, welche bei ca. 230V liegt, keinen höheren Einfluss auf das Ergebnis haben kann als die Frequenz.\\
+    \noindent
+    Zusätzlich werden die Ableitungen über alle Werte der Rohdaten berechnet.
+    Dies führt dazu, dass vom neuronalen Netz der Verlauf der Kurve berücksichtigt wird um Geräte zu erkennen und nicht die reinen Rohwerte, welche je nach Netzwerk und aktueller Netzaktivität stark abweichen können.
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            Model & Genauigkeit & Validierungsgenauigkeit \\
+            \hline
+            CNN & 85,69\% & 85,78\% \\
+            \hline
+            RNN & 87,99\% & 86,68\% \\
+            \hline
+            MIX & 48,13\% & 48,42\% \\
+            \hline
+        \end{tabular}
+        \caption{Ergebnis: Ableitung}
+        \label{tabl:ErgebnisAbleitung}
+    \end{table}
+
+    \section{Auswertungsalgorithmus}\label{Auswertungsalgorithmus}
+        Nach der Klassifikation der Batches mit einem der neuronalen Netze, sind für diese klassifizierten Batches mit n Datenpunkten für jeden Punkt n Klassifizierungen vorhandenen(vgl. Algorithmus \ref{alg:BatchGenerierung}).
+        Somit muss diese Klassifikation ausgewertet werden um genau sagen zu können, zu welchen Datenpunkten(Zeitpunkten) welche Geräte aktiv waren und welches Gerät am wahrscheinlichsten aktiv war.
+        Hierzu wird der Algorithmus in \ref{alg:Ergbnisauswertung} verwendet, welcher die Treffer sowie die genaue Wahrscheinlichkeit pro Klasse zu einem bestimmten Zeitpunkt berücksichtigt. 
+        Dieser Algorithmus bestimmt die Anzahl der Gewinnerklassen(Klasse mit der höchsten Wahrscheinlichkeit) aller Batches in denen der bestimmte Datenpunkt vorhanden ist, und bestimmt nun aus dieser Anzahl wiederum die Gewinnerklasse(Klasse mit den meisten Treffern).
+        Außerdem wird die Wahrscheinlichkeit aller Klassen in allen Batches des Datenpunktes summiert und wiederum die Gewinnerklasse bestimmt.
+        Somit erhält man zwei verschiedene Gewinnerklassen, welche wiederum miteinander verglichen werden um die endgültige Gewinnerklasse zu bestimmen.
+
+        Der Vorteil dieses Verfahrens ist die Berücksichtigung aller Klassifikationen sowie deren einzel Wahrscheinlichkeit, sodass sich eine genauere Klassifizierung ergibt, wie Abbildung \ref{fig:CNN_RawClassification} zeigt.
+        \begin{algorithm}\label{alg:Ergbnisauswertung}
+            \caption{Ergbnisauswertung}
+            \begin{algorithmic}[1]
+            \Function{EvaluatePrediction}{$P,b$}
+                \State \Comment{P - int[][] (Ergebnis eines neuronalen Netzes), b - int (Batchgröße)}
+                \State
+                \State ${A} = int[ ]$
+                \For{$i = 0$ to $length(P)$}
+                    \State
+                    \State // Hit-Punkte aller Klassen für einen Zeitpunkt
+                    \State $ClassesHit = int[ ]$
+                    \State // Wahrscheinlichkeit aller Klassen für einen Zeitpunkt
+                    \State $ClassesPerc = float[ ]$
+                    \State
+                    \If{$i < b$}
+                        \State $start = 0$
+                        \State $end = i$
+                    \Else
+                        \State $start = i - b$
+                        \State $end = i$
+                    \EndIf
+                    \State
+                    \For{$d = start$ to $end$}
+                        \State $maxClassIndex = argmax(pred[d])$
+                        \State $ClassesHit[maxClassIndex]++$
+
+                        \For{$w = 0$ to $pred[d]$}
+                            \State $ClassesPerc[w] = ClassesPerc[w] + pred[d][w]$
+                        \EndFor
+                    \EndFor
+                    \State
+                    \State $A.append(EvaluateClasses(ClassesHit, ClassesPerc))$
+                    \State
+                \EndFor
+                \State return $A$
+            \EndFunction
+            \end{algorithmic}
+        \end{algorithm}
+        \begin{algorithm}
+            \caption{Ergebnis-Klassen-Auswertung}
+            \begin{algorithmic}[1]
+            \Function{EvaluateClasses}{$ClassesHit, ClassesPerc$}
+                \State \Comment{ClassesHit - int[], ClassesPerc - float[]}
+                \State
+                \State $MaxHitClass = argmax(ClassesHit)$
+                \State $MaxPercClass = argmax(ClassesPerc)$
+                \State
+                \If{$MaxHitClass == MaxPercClass$}
+                    \State return $MaxHitClass$
+                \Else
+                    \State
+                    \State $MaxHitClassPerc = ClassesHit[MaxHitClass] / Sum(ClassesHit) $
+                    \State $MaxPercClassPerc = MaxPercClass[MaxHitClass] / Sum(ClassesPerc) $
+                    \State
+                    \If{$$MaxHitClassPerc < MaxPercClassPerc$$}
+                        \State return $MaxPercClass$
+                    \Else
+                        \State return $MaxPercClass$
+                    \EndIf
+                \EndIf
+            \EndFunction
+            \end{algorithmic}
+        \end{algorithm}
