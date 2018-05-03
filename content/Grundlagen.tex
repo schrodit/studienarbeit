@@ -174,8 +174,8 @@
         \label{tabl:Perzeptron}
     \end{table}
 
-    \subsection{CNN - Convolutional Neural Network}
-    \subsection{RNN - Recurrent Neural Network}
+    \paragraph{CNN - Convolutional Neural Network}
+    \paragraph{RNN - Recurrent Neural Network}
 
 
 
@@ -211,9 +211,16 @@
         Zur automatischen Erhebung wird ein Messgerät benötigt, welches zwischen dem zu messenden Gerät und dem Stromnetz zwischengeschalten wird und sobald Strom fließt Daten an den Service übermittelt.
         Die automatisierte Methode ermöglichst es präzisere Zeiten als auch mehr Zeiten und Haushaltsgeräte gleichzeitig zu erfassen.
 
-        Da jedoch für die automatisierte Methode ein weiteres Gerät benötigt wird, werden die Daten manuell durch eine Person erfasst.\\
+        Da jedoch für die automatisierte Methode ein weiteres Gerät benötigt wird, werden die Daten für diese Arbeit manuell durch eine Person erfasst.\\
         \newline
-        Für die manuelle Datenerfassung wurde eine progressiv Web-App(vgl. Abbildung \ref{fig:WebApp1}, API: \cite{WesenseAPIRepo}, GUI: \cite{WesenseGUIRepo}) mit einer einfachen MySQL-Datenbank im Backend erstellt, mit der die Daten sehr einfach erfasst und abgespeichert werden können.
+        Für die manuelle Datenerfassung wurde eine progressive Web-Applikation(vgl. Abbildung \ref{fig:WebApp1}, API: \cite{WesenseAPIRepo}, GUI: \cite{WesenseGUIRepo}) mit einer einfachen MySQL-Datenbank im Backend erstellt.
+        Mithilfe dieser App können die Daten sehr einfach über ein mobiles Endgerät erfasst und abgespeichert werden.
+        \newline
+
+        Grundsätzlich besteht die entwickelte Applikation aus einer GUI welche eine normale Website ist und einem API\-Server Backend.
+        Der API\-Server bildet das Verbindungsstück zwischen den klassifizierten Zeiträumen und den eigentlichen Daten des Messgerätes.
+        Die Website, welche auf dem Polymer\-Framework\footnote{\url{https://www.polymer-project.org/}} basiert, ist somit nur eine Anzeige für die Funktionen des API-Servers.
+        Sie bietet mehrere Seiten zur mauellen Klassifikation der Geräte, sowie verschiedene Virtualisierungen(vgl. Anbschnitt \ref{VisualisierungWebApp}) zur Analyse der klassifizierten Zeiträume.
 
         \begin{figure}[h]
             \centering
