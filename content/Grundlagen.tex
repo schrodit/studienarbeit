@@ -2,37 +2,37 @@
 
 \section{Maschinelles Lernen (Machine Learning)}
 
-    Wenn man Maschinelles Lernen oder Künstliche Intelligenz hört, denkt die Mehrzahl an Roboter mit eigenem Bewusstsein und Denken wie in vielen Science-Fiction-Filmen dargestellt.
-    Jedoch ist Maschinelles Lernen mittlerweile keine Zukunftstechnologie mehr.
+    Wenn man maschinelles Lernen oder Künstliche Intelligenz hört, denkt die Mehrzahl an Roboter mit eigenem Bewusstsein und Denken wie in vielen Science-Fiction-Filmen dargestellt.
+    Jedoch ist maschinelles Lernen mittlerweile keine Zukunftstechnologie mehr.
     Bereits in den 60er Jahren gab es erste Versuche der Wissenschaft Künstliche Intelligenz zu erschaffen.
-    Doch was ist Maschinelles Lernen wirklich? Und was bedeutet es für einen Computer zu lernen?
+    Doch was ist maschinelles Lernen wirklich? Und was bedeutet es für einen Computer zu lernen?
     \newline
 
     \noindent
     Dieses Kapitel beschäftigt sich mit diesen Fragen und gibt einen kurzen Überblick über heutige Verfahren von Maschinellem Lernen.
 
     \subsection{Künstliche Intelligenz}
-    Bevor Maschinelles Lernen erklärt werden kann sollte Künstliche Intelligenz im allgemeinen geklärt werden.
+    Bevor maschinelles Lernen erklärt werden kann sollte Künstliche Intelligenz im allgemeinen geklärt werden.
 
 
     \subsection{Einführung}
-    Nimmt man den Begriff Maschinelles Lernen wörtlich beschreibt er das Lernen einer Maschine, also die Fähigkeit einer Maschine intelligenter zu werden.
+    Nimmt man den Begriff maschinelles Lernen wörtlich beschreibt er das Lernen einer Maschine, also die Fähigkeit einer Maschine intelligenter zu werden.
     Von Maschinellem Lernen spricht man, falls eine Maschine auf Basis von Erfahrung und Fakten "`ohne speziell programmiert worden zu sein"'\cite[20]{HandsOnML}, neues Wissen oder neue Zusammenhänge generieren kann.
     Wenn eine Maschine nachdem sie etwas gelernt hat bei der Ausführung einer Aktivität besser geworden ist, hat die Maschine maschinell gelernt\cite[20]{HandsOnML}.
     Das reine auswendig lernen von Fakten, wie beispielsweise das abspeichern einer Wikipedia-Seite auf die lokale Festplatte eines Computers, ist kein Wissenserwerb.
     \newline
 
     \noindent
-    Ein Beispiel für Maschinelles Lernen ist der Spamfilter bei Emails.
+    Ein Beispiel für maschinelles Lernen ist der Spamfilter bei Emails.
     Hier lernt ein Computer auf Basis von bisherigen Spammails neue Emails als Spam zu erkennen.
     \newline
 
     Der Einsatz von Maschinellem Lernen hat meist Vorteile gegenüber herkömmlichen Statistischen Methoden falls große Datenmengen ausgewertet werden müssen
     oder kein bekanntes Modell zur Problemlösung bekannt ist.
-    Durch Maschinelles Lernen können Zusammenhänge erkannt werden, die durch andere statistische oder algorithmische Verfahren nicht erkannt oder abgebildet werden können.
+    Durch maschinelles Lernen können Zusammenhänge erkannt werden, die durch andere statistische oder algorithmische Verfahren nicht erkannt oder abgebildet werden können.
 
     \subsection{Lernprozess} \label{Lernprozess}
-    Grundlegend besteht Maschinelles Lernen aus einer Trainingsphase und einer Test- beziehungsweise Validierungsphase.
+    Grundlegend besteht maschinelles Lernen aus einer Trainingsphase und einer Test- beziehungsweise Validierungsphase.
     Hierzu werden zunächst alle vorhandenen Daten in Trainings- sowie Testdaten meist im Verhältnis 80:20 eingeteilt.
     In der Trainingsphase wird auf Basis der Trainingsdaten, wie zum Beispiel bisherige Emails eines Benutzers, ein Modell erstellt, welches dann in der Validierungsphase auf seine Genauigkeit und Validierungsgenauigkeit überprüft wird.
     Genauigkeit bedeutet, dass in der Validierungsphase alle Daten, welche auch im Trainingsprozess verwendet wurden, von dem neuen Modell klassifiziert werden.\\
@@ -57,7 +57,7 @@
 
 
     \section{Neuronale Netze}
-    \cite[Vgl. im Folgenden]{EinfuehrunginNN,WissensbasierteSysteme}
+    \cite[Vgl. im Folgenden]{EinfuehrunginNN,WissensbasierteSysteme}\\
     Neuronale Netze sind eine Form von Maschinellem Lernen und die heute am meisten eingesetzte Technik für Bilderkennung, Spracherkennung oder Zeitreihenanalyse.
     
     \subsection{Aufbau}
@@ -67,7 +67,7 @@
 
     \subsubsection{Neuronen}
     Neuronen bestehen aus Eingängen, auch Dendriten genannt, welche durch eine Eingangsfunktion, eine Aktivierungsfunktionen sowie eine Ausgabefunktion geleitet werden.
-    Die Ausgabe eines Neurons besteht daraus dass dieses je nach Eingabe und Art entweder angereg("gefeuert") wird oder nicht.
+    Die Ausgabe eines Neurons besteht daraus dass dieses je nach Eingabe und Art entweder angeregt("`gefeuert"') wird oder nicht.
     
     \begin{figure}[H]
         \centering
@@ -109,7 +109,7 @@
     Durch verschiedene Verbindungen zwischen Neuronen ergeben sich verschiedene Topologien von Netzen:
     \begin{description}
         \item[Vorwärts-verkettete Netze], auch feed-forword Netze genannt, bestehen aus verschiedenen Neuronen-Schichten(hidden layers), welche nur mit der nächst höheren Schicht verbunden sind. Somit verlaufen die Daten nur in eine Richtung, vom Eingang zum Ausgang.
-        \item[Rekurrente Netze] können auch aus mehreren Neuronen-Schichten bestehen wobei hier auch verbindungen in tiefere Schichten möglich sind. Dies bedeutet, dass auch Ergebnisse von vorherigen Durchläufen des Netztes als Eingang mit einbezogen werden können.
+        \item[Rekurrente Netze], auch \ac{RNN}, können auch aus mehreren Neuronen-Schichten bestehen, wobei hier auch Verbindungen in tiefere Schichten möglich sind. Dies bedeutet, dass auch Ergebnisse von vorherigen Durchläufen des Netzes als Eingang mit einbezogen werden können.
         \item[Voll-vernetzte Netze] sind neuronale Netze, bei denen alle Neuronen mit allen anderen Neuronen vernetzt sind. Wobei hierbei keine wirkliche Struktur erkennbar ist und ein sehr großer Rechenaufwand besteht.
     \end{description}
 
@@ -175,11 +175,25 @@
     \end{table}
 
     \paragraph{CNN - Convolutional Neural Network}
-    \paragraph{RNN - Recurrent Neural Network}
+    \cite[Vgl. im Folgenden]{Robotics2}\\
+    Eine weitere Form eines neuronalen Netzes ist ein \ac{CNN}.
+    Diese Form findet häufig Anwendung in der Bilderkennung oder Bildklassifizierung.
+    \newline
+
+    Die Struktur eins \ac{CNN} besteht aus mehreren "`Convolutional Layern"' und einem "`Pooling Layer"'.
+    Bei einem \ac{CNN} wird durch verschiedene Faltungsmatrixen eine mehrdimensionale Matrix ständig zu "`verkleinern"'(vgl. Abbildung \ref{fig:Typisch_CNN}).
+    Dieser Prozess beschreibt eine Generalisierung der Eingabematrix, sodass als Ausgabe für jede Klassifizierung-Klasse eine generalisierte, kleinere Matrix entsteht.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{Typical_cnn}
+        \caption[Typischer Aufbau eines CNN]{Typischer Aufbau eines \ac{CNN} \footnote{\url{https://upload.wikimedia.org/wikipedia/commons/6/63/Typical_cnn.png}} }
+        \label{fig:Typisch_CNN}
+    \end{figure}
 
 
 
-\section{Physikalische Grundlagen zur Netzaktivität} \label{physikalischeGrundlagen}
+\section{Physikalische Grundlagen} \label{physikalischeGrundlagen}
 
 \section{Erhebung der Messdaten} \label{Messdaten}
 
