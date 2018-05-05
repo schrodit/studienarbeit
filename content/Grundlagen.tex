@@ -196,14 +196,16 @@
 \section{Physikalische Grundlagen} \label{physikalischeGrundlagen}
     Zur Messung der physiklaischen Werte eines Stromnetzes wird ein WeSense-Messgerät\footnote{http://www.wesense-app.com/home-en/} verwendet.
     Dieses Messgerät misst sekündlich nach DIN EN50160\cite{WesenseManual} 9 verschiedene Parameter.
-    Diese Parameter beinhalten die Spannung, die Frequenz sowie die ungeraden Harmonischen bis zur 15ten\cite[S.2, Kapitel 1.2]{WesenseManual}.
+    Diese Parameter beinhalten die Spannung, die Frequenz sowie die ungeraden harmonischen Spannungsoberwellen bis zur 15ten\cite[S.2, Kapitel 1.2]{WesenseManual}.
     \newline
 
-    Die DIN EN50160 gibt an wie sich die sieben ungeraden harmonischen Oberwellen aus der Spannung zusammensetzten.
-    Harmonische Oberwellen sind Grundsätzlich reine sinusförmige Schwingungen welche das n-fache einer Grundfrequenz(bei Spannung 230V) sind.
+    Die DIN EN50160\cite{EN50160} gibt an wie sich die sieben ungeraden harmonischen Oberwellen aus der Spannung zusammensetzten.
+    Harmonische Oberwellen sind reine sinusförmige Schwingungen welche das n-fache einer Grundfrequenz sind.
     Addiert ergeben diese verschiedenen Oberwellen den gemessenen Wert(vgl. Abbildung \ref{fig:AddierteOberwwellen}).
 
-    Diese harmonischen Spannungsoberwellen werden als Oberschwingungspegel der Grundschwingung in Prozent angegeben.
+    Diese harmonischen Spannungsoberwellen werden als Oberschwingungspegel der Grundfrequenz in Prozent angegeben.
+    Die Grundfrequenz \( f \), mit Geschwindigkeit \( V \) und Wellenlänge \( \lambda \), ergibt sich aus \( f = \frac{V}{\lambda} \).
+    %Grundfrenquenz?
 
     \begin{figure}[H]
         \centering
@@ -212,14 +214,21 @@
         \label{fig:AddierteOberwwellen}
     \end{figure}
 
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=\textwidth]{EN50160}
-        \caption[EN5060 Harmonische Oberwellen]{Illustration of a voltage dip and a short supply interruption, classified according to%
-        EN 50160; Un – nominal voltage of the supply system (rms), UA – amplitude of the supply%
-        voltage, U(rms) – the actual rms value of the supply voltage \cite[S. 5]{EN50160}}
-        \label{fig:EN50160_Hamonics}
-    \end{figure}
+    Netzteile, welche in verschiedenen Haushaltsgeräten eingebaut sind, verbrauchen je nach Nutzung mehr oder weniger Strom, was die Spannung im Netz durch diesen Verbraucher sinken oder steigen lässt.
+    Auch beeinflusst jedes Netzteil die harmonischen Oberwellen auf eine andere Art und Weise.
+    
+    Durch diese zwei Einwirkungen auf das gesamte Stromnetz eines Haushalts sollte es folglich möglich sein Unterschiede zu erkennen.
+    
+    Jedoch könnten Komplikationen auftreten da das Messgerät nur sekündlich Daten misst und möglicherweise Veränderungen der Parameter so minimal sind das diese in der Zeitspanne nicht erkannt werden. 
+
+    % \begin{figure}[H]
+    %     \centering
+    %     \includegraphics[width=\textwidth]{EN50160}
+    %     \caption[EN5060 Harmonische Oberwellen]{Illustration of a voltage dip and a short supply interruption, classified according to%
+    %     EN 50160; Un – nominal voltage of the supply system (rms), UA – amplitude of the supply%
+    %     voltage, U(rms) – the actual rms value of the supply voltage \cite[S. 5]{EN50160}}
+    %     \label{fig:EN50160_Hamonics}
+    % \end{figure}
 
 \section{Erhebung der Messdaten} \label{Messdaten}
 
