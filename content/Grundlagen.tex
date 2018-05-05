@@ -194,6 +194,32 @@
 
 
 \section{Physikalische Grundlagen} \label{physikalischeGrundlagen}
+    Zur Messung der physiklaischen Werte eines Stromnetzes wird ein WeSense-Messgerät\footnote{http://www.wesense-app.com/home-en/} verwendet.
+    Dieses Messgerät misst sekündlich nach DIN EN50160\cite{WesenseManual} 9 verschiedene Parameter.
+    Diese Parameter beinhalten die Spannung, die Frequenz sowie die ungeraden Harmonischen bis zur 15ten\cite[S.2, Kapitel 1.2]{WesenseManual}.
+    \newline
+
+    Die DIN EN50160 gibt an wie sich die sieben ungeraden harmonischen Oberwellen aus der Spannung zusammensetzten.
+    Harmonische Oberwellen sind Grundsätzlich reine sinusförmige Schwingungen welche das n-fache einer Grundfrequenz(bei Spannung 230V) sind.
+    Addiert ergeben diese verschiedenen Oberwellen den gemessenen Wert(vgl. Abbildung \ref{fig:AddierteOberwwellen}).
+
+    Diese harmonischen Spannungsoberwellen werden als Oberschwingungspegel der Grundschwingung in Prozent angegeben.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\textwidth]{herr_addition_grundwelle_3_harmonische_oberwelle}
+        \caption[Addition von Oberwellen]{Beispiel für Addition von Oberwellen \footnote{\url{http://www.energie.ch/harmonische-oberschwingungen-netzqualitaet}} }
+        \label{fig:AddierteOberwwellen}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{EN50160}
+        \caption[EN5060 Harmonische Oberwellen]{Illustration of a voltage dip and a short supply interruption, classified according to%
+        EN 50160; Un – nominal voltage of the supply system (rms), UA – amplitude of the supply%
+        voltage, U(rms) – the actual rms value of the supply voltage \cite[S. 5]{EN50160}}
+        \label{fig:EN50160_Hamonics}
+    \end{figure}
 
 \section{Erhebung der Messdaten} \label{Messdaten}
 
@@ -202,8 +228,7 @@
     Zu diesen Größen gehört die allgemeine Netzspannung, die Netzfrequenz sowie sieben harmonischen Oberwellen (vgl. \ref{physikalischeGrundlagen}).
     Um einen allgemeinen Überblick über den Verlauf der Netzaktivität zu erhalten sowie verschiedene Zeiten und Geräte vergleichen zu können, müssen Daten über lange Zeiträume erhoben werden.\\
     \newline
-    Zur Erhebung der Werte zur Netzaktivität wurde ein WeSense-Messgerät\footnote{http://www.wesense-app.com/home-en/} verwendet.
-    Dieses Gerät misst alle benötigten Werte und sendet diese über einen MQTT-Broker\footnote{Message Queuing Telemetry Transport} an einen Service, welcher dann die Daten aufbereitet und in einer MSSQL Datenbank abspeichert.
+    Das Messgerät, welches in Kapitel \ref{physikalischeGrundlagen} beschrieben wird, misst alle benötigten Werte und sendet diese über einen MQTT-Broker\footnote{Message Queuing Telemetry Transport} an einen Service, welcher dann die Daten aufbereitet und in einer MSSQL Datenbank abspeichert.
     Die Werte werden sekündlich gemessen und in die Datenbank gespeichert oder an registrierte Websocket-Verbindungen gesendet.
     \newline
 
