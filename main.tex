@@ -12,6 +12,9 @@
 \usepackage{xcolor}
 \include{listing/json}
 
+%table of contents styling
+\usepackage{tocloft}
+
 %page header
 \usepackage{fancyhdr}
 
@@ -50,6 +53,7 @@
 
 \begin{document}
 \selectlanguage{german}
+\pagestyle{empty}
 
 \title{Klassifikation und Analyse aus Stromdaten im Haushalt mit neuronalen
 Netzen}
@@ -57,13 +61,16 @@ Netzen}
 \date{\today}
 
 \include{content/titlepage}
-\newcounter{additional}
 
+\tocloftpagestyle{empty}
 \tableofcontents
 
 
 \include{content/abstract}
 \include{content/Acronyms}
+\pagestyle{plain}
+\setcounter{page}{1}
+
 \include{content/Einleitung}
 \include{content/Grundlagen}
 \include{content/Ausfuerung}
@@ -73,6 +80,7 @@ Netzen}
 \include{content/Anlagen}
 
 \listoffigures
+\listoftables
 \listofalgorithms
 \bibliographystyle{plain} 
 \bibliography{bib/myBib.bib}

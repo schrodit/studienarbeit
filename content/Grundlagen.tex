@@ -49,7 +49,7 @@
     % Abbildung zu testphasen hinzufügen
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\textwidth]{MLTrainigsphasen}
+        \includegraphics[width=0.8\textwidth]{MLTrainigsphasen}
         \caption{Trainingsprozess (\cite[Figure 1-2]{HandsOnML})}
         \label{fig:MLTrainigsprozess}
     \end{figure}
@@ -180,8 +180,10 @@
     \newline
 
     Die Struktur eins \ac{CNN} besteht aus mehreren "`Convolutional Layern"' und einem "`Pooling Layer"'.
-    Bei einem \ac{CNN} wird durch verschiedene Faltungsmatrixen eine mehrdimensionale Matrix ständig zu "`verkleinern"'(vgl. Abbildung \ref{fig:Typisch_CNN}).
+    Bei einem \ac{CNN} wird durch verschiedene Faltungsmatrixen eine mehrdimensionale Matrix ständig "`verkleinert"'(vgl. Abbildung \ref{fig:Typisch_CNN}).
     Dieser Prozess beschreibt eine Generalisierung der Eingabematrix, sodass als Ausgabe für jede Klassifizierung-Klasse eine generalisierte, kleinere Matrix entsteht.
+    
+    Beim Lernen wird versucht diese Matrix so zu erzeugen, dass essentielle Eigenschaften für die jeweilige Klassifikation abgebildet werden.
 
     \begin{figure}[H]
         \centering
