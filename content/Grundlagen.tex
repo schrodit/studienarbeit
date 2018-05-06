@@ -12,14 +12,14 @@
     Dieses Kapitel beschäftigt sich mit diesen Fragen und gibt einen kurzen Überblick über heutige Verfahren von Maschinellem Lernen.
 
     \subsection{Künstliche Intelligenz}
-    Bevor maschinelles Lernen erklärt werden kann sollte Künstliche Intelligenz im allgemeinen geklärt werden.
+    Bevor maschinelles Lernen erklärt werden kann sollte Künstliche Intelligenz im Allgemeinen geklärt werden.
 
 
     \subsection{Einführung}
     Nimmt man den Begriff maschinelles Lernen wörtlich beschreibt er das Lernen einer Maschine, also die Fähigkeit einer Maschine intelligenter zu werden.
     Von Maschinellem Lernen spricht man, falls eine Maschine auf Basis von Erfahrung und Fakten "`ohne speziell programmiert worden zu sein"'\cite[20]{HandsOnML}, neues Wissen oder neue Zusammenhänge generieren kann.
-    Wenn eine Maschine nachdem sie etwas gelernt hat bei der Ausführung einer Aktivität besser geworden ist, hat die Maschine maschinell gelernt\cite[20]{HandsOnML}.
-    Das reine auswendig lernen von Fakten, wie beispielsweise das abspeichern einer Wikipedia-Seite auf die lokale Festplatte eines Computers, ist kein Wissenserwerb.
+    Wenn eine Maschine, nachdem sie etwas gelernt hat, bei der Ausführung einer Aktivität besser geworden ist, hat diese etwas neues gelernt\cite[20]{HandsOnML}.
+    Das reine auswendig lernen von Fakten, wie beispielsweise das Abspeichern einer Wikipedia-Seite auf die lokale Festplatte eines Computers, ist kein Wissenserwerb.
     \newline
 
     \noindent
@@ -27,8 +27,7 @@
     Hier lernt ein Computer auf Basis von bisherigen Spammails neue Emails als Spam zu erkennen.
     \newline
 
-    Der Einsatz von Maschinellem Lernen hat meist Vorteile gegenüber herkömmlichen Statistischen Methoden falls große Datenmengen ausgewertet werden müssen
-    oder kein bekanntes Modell zur Problemlösung bekannt ist.
+    Der Einsatz von Maschinellem Lernen hat meist Vorteile gegenüber herkömmlichen statistischen Methoden wenn große Datenmengen ausgewertet werden müssen oder kein bekanntes Modell zur Problemlösung bekannt ist.
     Durch maschinelles Lernen können Zusammenhänge erkannt werden, die durch andere statistische oder algorithmische Verfahren nicht erkannt oder abgebildet werden können.
 
     \subsection{Lernprozess} \label{Lernprozess}
@@ -36,14 +35,14 @@
     Hierzu werden zunächst alle vorhandenen Daten in Trainings- sowie Testdaten meist im Verhältnis 80:20 eingeteilt.
     In der Trainingsphase wird auf Basis der Trainingsdaten, wie zum Beispiel bisherige Emails eines Benutzers, ein Modell erstellt, welches dann in der Validierungsphase auf seine Genauigkeit und Validierungsgenauigkeit überprüft wird.
     Genauigkeit bedeutet, dass in der Validierungsphase alle Daten, welche auch im Trainingsprozess verwendet wurden, von dem neuen Modell klassifiziert werden.\\
-    Dieses Ergebnis wird dann mit der bekannten Klassifierung der Daten abgeglichen und eine Übereinstimmungswahrscheinlichkeit errechnet, welche dann als Genauigkeit des Modells gilt.
+    Dieses Ergebnis wird mit der bekannten Klassifierung der Daten abgeglichen und eine Übereinstimmungswahrscheinlichkeit errechnet, welche als Genauigkeit des Modells gilt.
     Um die Validierungsgenauigkeit zu berechnen wird derselbe Prozess auch mit den Testdaten durchgeführt.
     Die Validierungsgenauigkeit ist wichtig um herauszufinden ob das entstandene Netz die Trainingsdaten nur auswendig gelernt hat oder wirklich neues Wissen generiert hat.
     Dies ist der Fall, sobald während des Trainings die Validierungsgenauigkeit immer weiter sinkt, dann spricht man von Overfitting des Netzes.
     \newline
 
     \noindent
-    Aus dem Ergebnis der Validierungsphase sowie der sonstigen Wissensbasis kann nun eine neue Trainingsphase durchgeführt werden(vgl. \ref{fig:MLTrainigsprozess}).
+    Aufgrund der Ergebnisse der Validierungsphase sowie der sonstigen Wissensbasis kann nun eine neue Trainingsphase durchgeführt werden(vgl. \ref{fig:MLTrainigsprozess}).
     Dieser Prozess wird Epoche genannt und kann nun beliebig oft wiederholt werden und das Modell weiter verbessert werden.
     Das entstandene Modell stellt das neu generierte Wissen dar.
 
@@ -66,8 +65,8 @@
 
 
     \subsubsection{Neuronen}
-    Neuronen bestehen aus Eingängen, auch Dendriten genannt, welche durch eine Eingangsfunktion, eine Aktivierungsfunktionen sowie eine Ausgabefunktion geleitet werden.
-    Die Ausgabe eines Neurons besteht daraus dass dieses je nach Eingabe und Art entweder angeregt("`gefeuert"') wird oder nicht.
+    Neuronen bestehen aus Eingängen, auch Dendriten genannt, welche durch eine Eingangs-, Aktivierungs- sowie Ausgabefunktion geleitet werden.
+    Die Ausgabe eines Neurons kann je nach Eingabe und Art entweder angeregt("`gefeuert"') werden oder nicht.
     
     \begin{figure}[H]
         \centering
@@ -87,15 +86,15 @@
 
     \noindent
     Die Aktivierungsfunktion dient zur eigentlichen Auswertung der Eingabe bzw. Netzaktivität.
-    Die Aktivierungsfunktionen erzeugt ein Aktivierungspotential welches von der Ausgangsfunktion ausgewertet wird.
+    Diese erzeugt ein Aktivierungspotential welches von der Ausgangsfunktion ausgewertet wird.
     \newline
     
     \noindent
     Die Ausgangsfunktion entscheidet schlussendlich ob das Neuron angeregt wird oder nicht.
     Hierzu wird geprüft ob das Aktivierungspotential der Aktivierungsfunktion einen bestimmten Schwellenwert übersteigt.
-    Dieser Schwellenwert wird mithilde einer Schwellenwertfunktion errechnet. 
+    Dieser Schwellenwert wird mithilfe einer Schwellenwertfunktion errechnet. 
     Die Schwellenwertfunktion muss monoton wachsend sein, kann jedoch verschiedene Formen annehmen. 
-    Sie kann linear Verlaufen wie es beim Perzeptron der Fall ist, nicht-linear oder eine Sprungfunktion sein. 
+    Sie kann linear verlaufen wie es beim Perzeptron der Fall ist, nicht-linear oder eine Sprungfunktion sein. 
     Durch eine nicht-lineare Funktion wie die Sigmoid-Funktion lassen sich mächtigere neuronale Netze entwickeln weshalb heuzutage meist eine solche zum Einsatz kommt.
 
 
@@ -110,7 +109,7 @@
     \begin{description}
         \item[Vorwärts-verkettete Netze], auch feed-forword Netze genannt, bestehen aus verschiedenen Neuronen-Schichten(hidden layers), welche nur mit der nächst höheren Schicht verbunden sind. Somit verlaufen die Daten nur in eine Richtung, vom Eingang zum Ausgang.
         \item[Rekurrente Netze], auch \ac{RNN}, können auch aus mehreren Neuronen-Schichten bestehen, wobei hier auch Verbindungen in tiefere Schichten möglich sind. Dies bedeutet, dass auch Ergebnisse von vorherigen Durchläufen des Netzes als Eingang mit einbezogen werden können.
-        \item[Voll-vernetzte Netze] sind neuronale Netze, bei denen alle Neuronen mit allen anderen Neuronen vernetzt sind. Wobei hierbei keine wirkliche Struktur erkennbar ist und ein sehr großer Rechenaufwand besteht.
+        \item[Voll-vernetzte Netze] sind neuronale Netze, bei denen alle Neuronen miteinander vernetzt sind. Wobei hierbei keine wirkliche Struktur erkennbar ist und ein sehr großer Rechenaufwand besteht.
     \end{description}
 
     \begin{figure}[H]
@@ -123,22 +122,22 @@
 
     \subsubsection{Lernen}
     Bei neuronalen Netzen ist das vorhandene Wissen durch die Kantengewichte repräsentiert.
-    Daraus folgt, dass verschiedene Klassifikationen von neuronalen Netzen, mit derselben Topologie, sich nur von den Kantengewichten abhängt.
-    Dementsprechend lernt ein neuronales Netz durch das sequentielle Anpassen der Gewichte.
+    Daraus folgt, dass die verschiedenen Klassifikationen von neuronalen Netzen, mit derselben Topologie, nur von den Kantengewichten abhängt.
+    Dementsprechend lernt ein neuronales Netz durch sequentielles Anpassen der Gewichte.
     Dazu gibt es verschiedene Verfahren wie diese Gewichte angepasst werden können.
     \newline
 
     \noindent
-    Beim \textbf{Backpropagation Lernen} werden in der Trainingsphase die Ergebnissen eines Durchlaufs mit den erwartetten Ergebnissen verglichen und der Ausgabefehler berechnet.
-    Mithilfe dieses Fehlers wird nun Schichtweise versucht den Fehler auf einzelne Neuronen bzw. Gewichte bis hin zur Eingabeschicht zurückzuführen.
-    Danach werden nun bei verschiedenen Neuronen Änderungen der Gewichte durchgeführt um den Fehler der Ausgabefehlerunktion zu minimieren.
+    Beim \textbf{Backpropagation Lernen} werden in der Trainingsphase die Ergebnissen eines Durchlaufs mit den erwarteten Ergebnissen verglichen und der Ausgabefehler berechnet.
+    Mithilfe dieses Fehlers wird nun schichtweise versucht den Fehler auf einzelne Neuronen bzw. Gewichte bis hin zur Eingabeschicht zurückzuführen.
+    Danach werden nun bei verschiedenen Neuronen Änderungen der Gewichte durchgeführt um den Fehler der Ausgabefehlerfunktion zu minimieren.
     Hierbei wird für jedes Gewicht mithilfe verschiedener Gradientenverfahren eine Änderung berechnet.
     \newline
 
     \noindent
-    Beim \textbf{Batch Lernen} wird anders als beim Backpropagation Lernen nicht nach jeden Durchlauf des Netzes die Gewichte angepasst sondern erst nachdem das Trainingsset komplett durchlaufen wurde.
-    Dies führt zu weniger Genauigkeit das nicht auf spezielle Eigenschaften einzelner Einträge eingegangen.
-    Jedoch Ist dieses Verfahren sehr viel weniger Rechenaufwand und es können mehr Trainingsdaten in gleicher Zeit einbezogen werden.
+    Beim \textbf{Batch Lernen} werden anders als beim Backpropagation Lernen nicht nach jeden Durchlauf des Netzes die Gewichte angepasst, sondern erst nachdem das Trainingsset komplett durchlaufen wurde.
+    Dies kann zu weniger Genauigkeit führen, da nicht auf spezielle Eigenschaften einzelner Einträge eingegangen wird.
+    Vorteil dieses Verfahren ist, dass sehr viel weniger Rechenaufwand benötigt wird und mehr Trainingsdaten in gleicher Zeit einbezogen werden können.
     
     \subsubsection{Perzeptron}
     Ein sehr einfaches neuronales Netz ist das Perzeptron, welches 1958 von Frank Rosenblatt entwickelt wurde.
@@ -232,12 +231,12 @@
 
 \section{Erhebung der Messdaten} \label{Messdaten}
 
-    Um aussagekräftige Analysen und Klassifikationen über ein Stromnetz bzw. die Geräte in einem Stromnetz mit Maschinellem Lernen machen zu können, werden viele Trainings- und Testdaten benötigt.
+    Um aussagekräftige Analysen und Klassifikationen über ein Stromnetz bzw. die Geräte in einem Stromnetz mit maschinellem Lernen machen zu können, werden viele Trainings- und Testdaten benötigt.
     Die Daten bestehen aus verschiedenen physikalische Größen, die zu einem bestimmten Zeitpunkt in einem Stromnetz auftreten.
-    Zu diesen Größen gehört die allgemeine Netzspannung, die Netzfrequenz sowie sieben harmonischen Oberwellen (vgl. \ref{physikalischeGrundlagen}).
+    Zu diesen Größen gehört die allgemeine Netzspannung, die Netzfrequenz und sieben harmonischen Oberwellen (vgl. \ref{physikalischeGrundlagen}).
     Um einen allgemeinen Überblick über den Verlauf der Netzaktivität zu erhalten sowie verschiedene Zeiten und Geräte vergleichen zu können, müssen Daten über lange Zeiträume erhoben werden.\\
     \newline
-    Das Messgerät, welches in Kapitel \ref{physikalischeGrundlagen} beschrieben wird, misst alle benötigten Werte und sendet diese über einen MQTT-Broker\footnote{Message Queuing Telemetry Transport} an einen Service, welcher dann die Daten aufbereitet und in einer MSSQL Datenbank abspeichert.
+    Das Messgerät, welches in Kapitel \ref{physikalischeGrundlagen} beschrieben wird, misst alle benötigten Werte und sendet diese über einen MQTT-Broker\footnote{Message Queuing Telemetry Transport} an einen Service, welcher die Daten aufbereitet und in einer MSSQL Datenbank abspeichert.
     Die Werte werden sekündlich gemessen und in die Datenbank gespeichert oder an registrierte Websocket-Verbindungen gesendet.
     \newline
 
@@ -250,9 +249,10 @@
 
     \subsection*{Klassifikation der Messdaten}\label{KlassifikationDerMessdaten}
 
-        Durch die oben beschriebene Erhebung sind die physikalischen Werte zu bestimmten Zeitpunkten bestimmt worden.
-        Zusätzlich wird nun zur Identifikation der Geräte sowie zum Maschinellen Lernen, genau definierte Zeiträume benötigt in denen bestimmte Geräte aktiv waren.
-        Dies bedeutet, dass jedem Zeitpunkt ein oder mehrere Geräte zugewiesen werden. Die einem Gerät zugewiesense Daten werden im weiteren Verlauf gelabelte Daten genannt.\\
+        Wie in Abschnitt \ref{Messdaten} beschreiben sind die rohen Messdaten in einer Datenbank abgespeichert.
+        Zusätzlich werden nun zur Identifikation der Geräte sowie zum maschinellen Lernen genau definierte Zeiträume benötigt, in denen bestimmte Geräte aktiv waren.
+        Dies bedeutet, dass jedem Zeitpunkt ein oder mehrere Geräte zugewiesen werden. 
+        Die einem Gerät zugewiesenen Daten werden im weiteren Verlauf gelabelte Daten genannt.\\
         \newline
         Die gelabelten Daten können manuell oder automatisiert erhoben werden.
 
@@ -276,8 +276,8 @@
             \label{fig:ArchitectureTraining}
         \end{figure}
 
-        Abbildung \ref{fig:ArchitectureTraining} zeigt Einbindung der GUI und des API\-Servers in die Architektur der Messdatenspeicherung.
-        Die entwickelte Applikation besteht aus einer GUI welche eine normale Website ist und eine Visuaslisierung für den API\-Server darstellt.
+        Abbildung \ref{fig:ArchitectureTraining} zeigt die Einbindung der GUI und des API\-Servers in die Architektur der Messdatenspeicherung.
+        Die entwickelte Applikation besteht aus einer GUI, welche eine Website ist, und eine Visualisierung für den API\-Server darstellt.
         Der API\-Server bildet das Verbindungsstück zwischen den klassifizierten Zeiträumen und den eigentlichen Daten des Messgerätes.
         Die Website, welche auf dem Polymer\-Framework\footnote{\url{https://www.polymer-project.org/}} basiert, ist somit nur eine Anzeige für die Funktionen des API-Servers.
         Sie bietet mehrere Seiten zur mauellen Klassifikation der Geräte, sowie verschiedene Virtualisierungen(vgl. Anbschnitt \ref{VisualisierungWebApp}) zur Analyse der klassifizierten Zeiträume.
@@ -292,13 +292,17 @@
 \section{Visualisierung}\label{VisualisierungWebApp}
 
         Zusätzlich zur manuellen Erhebung der Daten wurden zur besseren Analyse der Daten verschiedene Visualisierungsmöglichkeiten implementiert.
-        Zum einen können die verschiedenen Physikalischen Größen eines Gerätes zu einem bestimmten Zeitpunkt miteinander verglichen werden.
-        Außerdem können auch bestimmte Größen zu verschiedenen gelabelten Zeiträumen eines Gerätes verglichen und analysiert werden. 
-        Durch diese Visualisierung können sehr gut und genau Gemeinsamkeiten in verschiedenen Größen oder Zeiten erkannt werden.\\
+        Einerseits können die verschiedenen physikalischen Größen eines Gerätes zu einem bestimmten Zeitpunkt miteinander verglichen werden.
+        Andererseits können auch bestimmte Größen zu gelabelten Zeiträumen eines Gerätes verglichen und analysiert werden. 
+        Durch diese Visualisierung können Gemeinsamkeiten bestmöglich in unterschiedlichen Größen oder Zeiten erkannt werden.\\
         \newline
         Es werden verschiedene Diagramme sowie Normalisierungen der Daten zur Analyse bereitgestellt.
-        Es besteht die Möglichkeit die Daten in einem Liniendiagramm sekündlich oder in frei wählbaren zusammengefassten Datenpunkten, sogennannten Klassen, anzuzeigen.
-        Des weiteren können Histogramme mit verschiedenen Klassen gewählt werden.
+        Die Analyse der Daten können in verschiedenen Diagrammen und Normalisierungen dargestellt werden:
+        \begin{itemize}
+            \item sekündlich in einem Liniendiagramm
+            \item in Datenpunkten (Klassen), welche frei wählbar sind
+            \item Histogramme mit verschiedenen Klassen
+        \end{itemize}
 
         \begin{figure}[h]
             \centering
