@@ -2,33 +2,33 @@
 
     Wie die nachfolgendenen Ergebnisse des Trainingsprozesses zeigen, unterscheiden sich die Ergebnisse der verschiedenen Netze stark.
 
-    Generell zeigen die Ergebnisse, dass ein \ac{CNN} bessere beziehungsweise genauere Ergebnisse ohne Overfitting erzielt als ein \ac{RNN} bei gleichen Parametern.
-    Dies führt auch dazu, dass das "`Mixed-Modell"' Ergebnisse zwischen den beiden reinen Modellen liefert.
-    Auch sieht man sehr gut, dass ein Model mit einem \ac{RNN} schneller trainiert, jedoch auch sehr früh Overfittet (vgl. Tabelle \ref{tabl:ErgebnisEpoch} ).
+    Generell zeigen die Ergebnisse, dass ein \ac{CNN} bessere, beziehungsweise genauere Ergebnisse ohne Overfitting erzielt als ein \ac{RNN} bei gleichen Parametern.
+    Dies führt dazu, dass das "`Mixed-Modell"' Ergebnisse zwischen den beiden reinen Modellen liefert.
+    Auch sieht man sehr gut, dass ein Model mit einem \ac{RNN} schneller trainiert, jedoch sehr früh "`overfittet"' (vgl. Tabelle \ref{tabl:ErgebnisEpoch} ).
     
     \paragraph{Batch} 
     Bei der Wahl der Batchgröße müssen zwei Faktoren für die Bewertung beachtet werden. 
     Wie bei den anderen Parametern sind die Genauigkeiten ein wichtiger Faktor. 
-    Hierbei ist zu sehen, dass mit steigender Batchgröße die Genauigkeit prinzipiell steigt, jedoch ein Overfitting bei zu großen Werten eintritt.
+    Hierbei ist zu sehen, dass mit steigender Batchgröße die Genauigkeit steigt, jedoch ein "`overfitting"' bei zu großen Werten eintritt.
     Dies ist auf die Laufzeit der einzelnen Geräte zurückzuführen.
-    Der zweite Bewertungsfaktor der Batchgröße ist die Laufzeit(Runtime) der zu klassifizierenden Geräte. 
+    Der zweite Bewertungsfaktor der Batchgröße ist die Laufzeit (Runtime) der zu klassifizierenden Geräte. 
     Die Batchgröße darf nicht größer sein als die kürzeste Laufzeit eines zu klassifizierenden Gerätes, da sonst zu der Ungenauigkeit des neuronalen Netzes die Ungenauigkeit der Batchgröße hinzukommt. %$$ f = \frac{Batchgröße}{Laufzeit} $$
     Somit sollte trotz besserer Ergebnisse mit großen Batches eine eher kleine Batchgröße gewählt werden.
 
     \paragraph{Epoche} 
-    Mit höherer Epochenanzahl, also mehreren Trainingsdurchläufen mit allen Trainingsdaten sowie Backpropagation lernen, werden alle Modelle besser trainiert und erzielen bessere Ergebnisse.
-    Jedoch tritt bei Modellen mit einem \ac{RNN} bei zu großen Trainingsdurchläufen, wie oben beschreiben, Overfitting auf.
+    Mit höherer Epochenanzahl (mehreren Trainingsdurchläufen mit allen Trainingsdaten sowie Backpropagation-Alogrithmus) werden alle Modelle besser trainiert und erzielen bessere Ergebnisse.
+    Jedoch tritt bei Modellen mit einem \ac{RNN} bei zu großen Trainingsdurchläufen "`overfitting"' auf (siehe oben).
     Dies bedeutet, dass bei \ac{RNN}-Modellen weniger Epochen durchlaufen werden sollten als bei \ac{CNN}-Modellen.
 
     \paragraph{Lernrate}
     Die Lernrate hat bei 20 Epochen nur wenig Einfluss auf das Ergebnis der neuronalen Netze.
-    Jedoch besteht bei hoher Lernrate die Gefahr, das Overfitting schneller auftritt oder bestimmte Features durch Zufall zu stark in das Ergebnis einfließen.
+    Jedoch besteht bei hoher Lernrate die Gefahr, dass "`overfitting"' schneller auftritt oder bestimmte Features durch Zufall zu stark in das Ergebnis einfließen.
     Hier sollte eine kleine Lernrate mit höherer Epochenzahl für besserer Ergebnisse gewählt werden.
     \newline
 
     \noindent
-    Zusammenfassend kann somit festgestellt werden, dass die besten Ergebnisse erzielt werden können, wenn die Lernrate niedrig ist, viele Epochen trainiert wird und eine kleinere Batchgröße gewählt wird.
-    Zur Erkennung von Mustern innerhalb einer Zeitserie mit mehreren Features eignet sich im Fall dieser Arbeit ein \ac{CNN} am besten.
+    Zusammenfassend kann somit festgestellt werden, dass die besten Ergebnisse erzielt werden, wenn die Lernrate niedrig ist, viele Epochen trainiert werden und eine kleinere Batchgröße gewählt wird.
+    Zur Erkennung von Mustern innerhalb einer Zeitserie mit mehreren Features eignet sich im Fall dieser Arbeit ein \ac{CNN} am Besten.
     \newline
 
     Die kompletten Ergebnisse sind in Kapitel \ref{Anlagen} zu finden.
@@ -177,28 +177,29 @@
 
         Nach Anwendung des in \ref{Auswertungsalgorithmus} beschriebenen Algorithmus ergeben sich die nachfolgenden Abbildungen der verschiedenen neuronalen Netze.
         Die Abbildungen zeigen die jeweiligen klassifizierten Geräte jeden Zeitpunktes von Abbildung \ref{fig:ResultClassificationPeriod}.
-        Hierbei zeigt die x-Achse den Zeitpunkt und die y-Achse das Gerät, wobei 
+        Hierbei zeigt die x-Achse den Zeitpunkt und die y-Achse das Gerät, wobei \\
         y: 0 \( \Rightarrow \)  "`Senseo Kaffeemaschine"',\\
         \noindent
         y: 1 \( \Rightarrow \)  "`Mikrowelle"',\\
         \noindent
-        y: 2 \( \Rightarrow \)  "`Bosch Vollautomat"',\\
+        y: 2 \( \Rightarrow \)  "`Bosch Vollautomat"', und\\
         \noindent
-        und y: 3 \( \Rightarrow \) "`Kein aktives bekanntes Gerät"'.
+        y: 3 \( \Rightarrow \) "`Kein aktives bekanntes Gerät"'.
         \\
         
         \noindent
         Die Abbildungen zeigen unterschiedliche Bewertungen beziehungsweise Klassifizierungen der Zeitpunkte.
-        Gut können die Gemeinsamkeiten aller drei Klassifizierungen erkannt werden.
-        Trotz der Einbeziehung vieler verschiedener Ergebnisse (vgl Algorithmus \ref{Auswertungsalgorithmus}), gibt es noch viele kleine Ausreißer.
-        Diese Ausreißer sind bei allen Modellen unterschiedlich verteilt und auch mit unterschiedlicher Länge.
-        Jedoch kann man sehr gut sehen, dass alle drei einen großen gemeinsamen Abschnitt haben (ca. y = [30, 190]), wo die "`Senseo Kaffeemaschine"' erkannt wurde.
-        Somit kann mit hoher Wahrscheinlich davon ausgegangen werden, dass zu diesem Zeitpunkt dieses Gerät aktiv war.
+        Dabei können die Gemeinsamkeiten aller drei Klassifizierungen gut erkannt werden.
+        
+        Trotz der Einbeziehung vieler verschiedener Ergebnisse (vgl. Algorithmus \ref{Auswertungsalgorithmus}), gibt es noch einige Ausreißer.
+        Diese Ausreißer sind bei allen neuronalen Netze unterschiedlich verteilt und auch mit unterschiedlicher Länge.
+        Jedoch kann man sehr gut sehen, dass alle drei neuronalen Netze einen großen gemeinsamen Abschnitt haben (ca. x = [30, 190]), wobei die "`Senseo Kaffeemaschine"' erkannt wurde.
+        Somit kann mit hoher Wahrscheinlichkeit davon ausgegangen werden, dass dieses Gerät zu diesem Zeitpunkt aktiv war.
         \newline
 
         \noindent
-        Die anderen Geräte wurden jedoch nie erkannt, was darauf zurückzuführen ist, dass für die anderen Geräte sehr wenige Daten vorhanden sind.
-        Wie die Klassifikation der "`Senseo Kaffeemaschine"' zeigt, können mit genügend Daten von Geräten, diese auch klassifiziert werden.
+        Die anderen Geräte wurden nie erkannt, was darauf zurückzuführen ist, dass für diese Geräte wenige Daten vorhanden sind.
+        Wie die Klassifikation der "`Senseo Kaffeemaschine"' zeigt, können mit genügend Daten diese Geräte auch klassifiziert werden.
         Auch können durch mehr Daten die Ausreißer, welche in allen Abbildungen zu sehen sind, vermindert werden und die Bestimmung von aktiven Geräten noch präziser durchgeführt werden.      
         
         \begin{figure}[H]
@@ -232,8 +233,8 @@
     \subsection{Ergebnisglättung}
         Eine Möglichkeit die Ungenauigkeit des neuronalen Netzes zu verbessern ist die Auswertung der Ausreißer.
         Durch die Einbeziehung einer weiteren Eigenschaft der Geräte können einige Ausreißer erkannt und beseitigt werden.
-        Wie bereits im Abschnitt \ref{Ergebnis} in Paragraph "`Batch"' erwähnt wurde, wird die Größe der Batches klein gehalten damit Geräte mit kleineren Laufzeiten erkannt werden können.
-        Diese Laufzeiten können auch für eine weitere Verbesserung verwendet werden.
+        Wie bereits im Abschnitt \ref{Ergebnis} in Paragraph "`Batch"' erwähnt wurde, wird die Größe der Batches klein gehalten, damit Geräte mit kleineren Laufzeiten erkannt werden können.
+        Diese Laufzeiten können für eine weitere Verbesserung verwendet werden.
         Durch die Datenbank(vgl. Kapitel \ref{Messdaten}), welche die manuell klassifizierten Geräte beinhaltet, wird die kürzeste Laufzeit jedes Gerätes ermittelt.
         Diese Laufzeit gibt an wie lange ein Gerät mindestens aktiv war.
         Somit wird diese Eigenschaft eingesetzt um Ausreißer, welche kürzer dauern als die kürzeste Laufzeit, zu beseitigen.
@@ -247,8 +248,8 @@
         \end{figure}
     
     \subsection{Zusammenfassung}
-        Zusammenfassend ist das Ergebnis eine Applikation mit einem neuronales Netz als Kern. 
-        Dieses neuronale Netz kann mithilfe verschiedener Algorithmen die aktiven Laufzeiten verschiedener Geräte bestimmen.
+        Zusammenfassend ist das Ergebnis eine Applikation mit einem neuronalen Netz als Kern. 
+        Dieses neuronale Netz kann mithilfe verschiedener Algorithmen die aktiven Laufzeiten von Geräten bestimmen.
         Dies bedeutet, dass bestimmt werden kann zu welchen Zeiten welche Geräte aktiv waren und benutzt wurden.
         
         Um weitere Geräte klassifizieren zu können oder die Genauigkeit der bisherigen Geräte zu verbessern, ist es notwendig mehr klassifizierte Daten zu erheben.

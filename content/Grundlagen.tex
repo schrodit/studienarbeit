@@ -243,9 +243,9 @@
 
     \begin{figure}[h]
         \centering
-        \includegraphics[width=1.0\textwidth]{Architecture}
-        \caption{Komplette Architektur \protect\cite{DrawIO}, \protect\cite{Tensorflow}}
-        \label{fig:Architecture}
+        \includegraphics[width=0.7\textwidth]{WeSenseArchitecture}
+        \caption{Architektur zur Abspeicherung der Daten \protect\cite{DrawIO}, \protect\cite{Tensorflow}}
+        \label{fig:ArchitectureWesense}
     \end{figure}
 
     \subsection*{Klassifikation der Messdaten}\label{KlassifikationDerMessdaten}
@@ -254,18 +254,30 @@
         Zusätzlich wird nun zur Identifikation der Geräte sowie zum Maschinellen Lernen, genau definierte Zeiträume benötigt in denen bestimmte Geräte aktiv waren.
         Dies bedeutet, dass jedem Zeitpunkt ein oder mehrere Geräte zugewiesen werden. Die einem Gerät zugewiesense Daten werden im weiteren Verlauf gelabelte Daten genannt.\\
         \newline
-        Um diese gelabelten Daten zu erheben gibt es verschiedene Möglichkeiten.
-        Die Daten können entweder durch eine Person, welche Zeiten zu denen sicher Geräte aktiv waren manuell erfasst werden, oder durch eine Maschine automatisch erhoben werden.
-        Zur automatischen Erhebung wird ein Messgerät benötigt, welches zwischen dem zu messenden Gerät und dem Stromnetz zwischengeschalten wird und sobald Strom fließt Daten an den Service übermittelt.
-        Die automatisierte Methode ermöglichst es präzisere Zeiten als auch mehr Zeiten und Haushaltsgeräte gleichzeitig zu erfassen.
+        Die gelabelten Daten können manuell oder automatisiert erhoben werden.
 
-        Da jedoch für die automatisierte Methode ein weiteres Gerät benötigt wird, werden die Daten für diese Arbeit manuell durch eine Person erfasst.\\
+        Die manuelle Erhebung der Daten erfordert eine Person, welche Zeiten zu denen sicher Geräte aktiv waren manuell kennzeichnet.
+
+        Um Daten automatisiert zu Erheben wird ein weiteres Messgerät pro Haushaltsgerät benötigt.
+        Dieses Messgerät müsste zwischen dem zu messenden Gerät und dem Stromnetz zwischengeschalten werden und das Gerät klassifizieren sobald Strom fließt.
+        Die automatisierte Methode ermöglichst es präzisere Klassifikationen als auch mehr Zeitspannen und Haushaltsgeräte gleichzeitig zu erfassen und ist somit die bevorzugte Methode.
+
+        Jedoch müsste für die automatisierte Methode ein weiteres Gerät entwickelt werden, weshalb für diese Arbeit dies manuelle Methode gewählt wird.\\
         \newline
+
         Für die manuelle Datenerfassung wurde eine progressive Web-Applikation(vgl. Abbildung \ref{fig:WebApp1}, API: \cite{WesenseAPIRepo}, GUI: \cite{WesenseGUIRepo}) mit einer einfachen MySQL-Datenbank im Backend erstellt.
         Mithilfe dieser App können die Daten sehr einfach über ein mobiles Endgerät erfasst und abgespeichert werden.
         \newline
 
-        Grundsätzlich besteht die entwickelte Applikation aus einer GUI welche eine normale Website ist und einem API\-Server Backend.
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=1.0\textwidth]{ArchitectureTraining}
+            \caption{Architektur zum Training der neuronalen Netze \protect\cite{DrawIO}, \protect\cite{Tensorflow}}
+            \label{fig:ArchitectureTraining}
+        \end{figure}
+
+        Abbildung \ref{fig:ArchitectureTraining} zeigt Einbindung der GUI und des API\-Servers in die Architektur der Messdatenspeicherung.
+        Die entwickelte Applikation besteht aus einer GUI welche eine normale Website ist und eine Visuaslisierung für den API\-Server darstellt.
         Der API\-Server bildet das Verbindungsstück zwischen den klassifizierten Zeiträumen und den eigentlichen Daten des Messgerätes.
         Die Website, welche auf dem Polymer\-Framework\footnote{\url{https://www.polymer-project.org/}} basiert, ist somit nur eine Anzeige für die Funktionen des API-Servers.
         Sie bietet mehrere Seiten zur mauellen Klassifikation der Geräte, sowie verschiedene Virtualisierungen(vgl. Anbschnitt \ref{VisualisierungWebApp}) zur Analyse der klassifizierten Zeiträume.
