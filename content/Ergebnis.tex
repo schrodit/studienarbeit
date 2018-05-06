@@ -2,9 +2,9 @@
 
     Wie die nachfolgendenen Ergebnisse des Trainingsprozesses zeigen, unterscheiden sich die Ergebnisse der verschiedenen Netze stark.
 
-    Generell zeigen die Ergebnisse, dass ein \ac{CNN} bessere, beziehungsweise genauere Ergebnisse ohne Overfitting erzielt als ein \ac{RNN} bei gleichen Parametern.
+    Generell zeigen die Ergebnisse, dass ein \ac{CNN} bessere, beziehungsweise genauere Ergebnisse ohne "`overfitting"' erzielt als ein \ac{RNN} bei gleichen Parametern.
     Dies führt dazu, dass das "`Mixed-Modell"' Ergebnisse zwischen den beiden reinen Modellen liefert.
-    Auch sieht man sehr gut, dass ein Model mit einem \ac{RNN} schneller trainiert, jedoch sehr früh "`overfittet"' (vgl. Tabelle \ref{tabl:ErgebnisEpoch} ).
+    Auch sieht man sehr gut, dass ein Model mit einem \ac{RNN} schneller trainiert, jedoch sehr früh "`overfittet"' (vgl. Tabelle \ref{tabl:ErgebnisEpoch} und Abbildung \ref{fig:ValLoss} ).
     
     \paragraph{Batch} 
     Bei der Wahl der Batchgröße müssen zwei Faktoren für die Bewertung beachtet werden. 
@@ -16,14 +16,14 @@
     Somit sollte trotz besserer Ergebnisse mit großen Batches eine eher kleine Batchgröße gewählt werden.
 
     \paragraph{Epoche} 
-    Mit höherer Epochenanzahl (mehreren Trainingsdurchläufen mit allen Trainingsdaten sowie Backpropagation-Alogrithmus) werden alle Modelle besser trainiert und erzielen bessere Ergebnisse.
+    Mit höherer Epochenanzahl (mehreren Trainingsdurchläufen mit allen Trainingsdaten sowie Backpropagation-Algorithmus) werden alle Modelle besser trainiert und erzielen bessere Ergebnisse.
     Jedoch tritt bei Modellen mit einem \ac{RNN} bei zu großen Trainingsdurchläufen "`overfitting"' auf (siehe oben).
     Dies bedeutet, dass bei \ac{RNN}-Modellen weniger Epochen durchlaufen werden sollten als bei \ac{CNN}-Modellen.
 
     \paragraph{Lernrate}
     Die Lernrate hat bei 20 Epochen nur wenig Einfluss auf das Ergebnis der neuronalen Netze.
     Jedoch besteht bei hoher Lernrate die Gefahr, dass "`overfitting"' schneller auftritt oder bestimmte Features durch Zufall zu stark in das Ergebnis einfließen.
-    Hier sollte eine kleine Lernrate mit höherer Epochenzahl für besserer Ergebnisse gewählt werden.
+    Hier sollte eine kleine Lernrate mit höherer Epochenzahl für bessere Ergebnisse gewählt werden.
     \newline
 
     \noindent
@@ -188,18 +188,19 @@
         \\
         
         \noindent
-        Die Abbildungen zeigen unterschiedliche Bewertungen beziehungsweise Klassifizierungen der Zeitpunkte.
+        Die Abbildungen zeigen unterschiedliche Bewertungen, beziehungsweise Klassifizierungen der Zeitpunkte.
         Dabei können die Gemeinsamkeiten aller drei Klassifizierungen gut erkannt werden.
         
         Trotz der Einbeziehung vieler verschiedener Ergebnisse (vgl. Algorithmus \ref{Auswertungsalgorithmus}), gibt es noch einige Ausreißer.
-        Diese Ausreißer sind bei allen neuronalen Netze unterschiedlich verteilt und auch mit unterschiedlicher Länge.
+        Diese Ausreißer sind bei allen neuronalen Netzen unterschiedlich verteilt und auch mit unterschiedlicher Länge.
         Jedoch kann man sehr gut sehen, dass alle drei neuronalen Netze einen großen gemeinsamen Abschnitt haben (ca. x = [30, 190]), wobei die "`Senseo Kaffeemaschine"' erkannt wurde.
         Somit kann mit hoher Wahrscheinlichkeit davon ausgegangen werden, dass dieses Gerät zu diesem Zeitpunkt aktiv war.
         \newline
 
         \noindent
         Die anderen Geräte wurden nie erkannt, was darauf zurückzuführen ist, dass für diese Geräte wenige Daten vorhanden sind.
-        Wie die Klassifikation der "`Senseo Kaffeemaschine"' zeigt, können mit genügend Daten diese Geräte auch klassifiziert werden.
+        
+        Wie die Klassifikation der "`Senseo Kaffeemaschine"' zeigt, können mit genügend Daten diese Geräte klassifiziert werden.
         Auch können durch mehr Daten die Ausreißer, welche in allen Abbildungen zu sehen sind, vermindert werden und die Bestimmung von aktiven Geräten noch präziser durchgeführt werden.      
         
         \begin{figure}[H]
@@ -235,7 +236,7 @@
         Durch die Einbeziehung einer weiteren Eigenschaft der Geräte können einige Ausreißer erkannt und beseitigt werden.
         Wie bereits im Abschnitt \ref{Ergebnis} in Paragraph "`Batch"' erwähnt wurde, wird die Größe der Batches klein gehalten, damit Geräte mit kleineren Laufzeiten erkannt werden können.
         Diese Laufzeiten können für eine weitere Verbesserung verwendet werden.
-        Durch die Datenbank(vgl. Kapitel \ref{Messdaten}), welche die manuell klassifizierten Geräte beinhaltet, wird die kürzeste Laufzeit jedes Gerätes ermittelt.
+        Durch die Datenbank (vgl. Kapitel \ref{Messdaten}), welche die manuell klassifizierten Geräte beinhaltet, wird die kürzeste Laufzeit jedes Gerätes ermittelt.
         Diese Laufzeit gibt an wie lange ein Gerät mindestens aktiv war.
         Somit wird diese Eigenschaft eingesetzt um Ausreißer, welche kürzer dauern als die kürzeste Laufzeit, zu beseitigen.
         Daraus ergibt sich für die Abbildung \ref{fig:CNN_RawClassification} eine geglättete Klassifikation, siehe Abbildung \ref{fig:CNN_SmoothClassification}.
